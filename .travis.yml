@@ -17,3 +17,4 @@ deploy:
   app: tavern-keepers
   on:
   repo: jennybell/dnd-finder
+  run: rake db:migrate
