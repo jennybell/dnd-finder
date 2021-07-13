@@ -7,8 +7,7 @@ cache:
 script:
   - bin/rails db:create 
   - bin/rails db:migrate
-  # - bundle exec rspec --color --format documentation --require spec_helper --require rails_helper
-services:
+  - bundle exec rspec
  — postgresql
 deploy:
   provider: heroku
