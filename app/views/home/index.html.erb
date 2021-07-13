@@ -1,6 +1,12 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
+<%= current_user.id %>
+<%= current_user.email %>
+<%= current_user.location %>
+<%= current_user.dm %>
+<%= current_user.terms %>
+
 <% if user_signed_in? %>
   <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
 <% else %>

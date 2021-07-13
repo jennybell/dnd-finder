@@ -31,6 +31,16 @@
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :dm %>
+    <%= f.label :dm, "Would you class yourself a Dungoen Master" %><br />
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
