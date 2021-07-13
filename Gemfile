@@ -38,6 +38,7 @@ group :development, :test do
   gem 'rexml'
   gem 'factory_bot_rails'
   gem 'spring-commands-rspec'
+  gem 'simplecov'
 end
 
 group :development do
