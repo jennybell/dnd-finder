@@ -5,6 +5,7 @@ rvm:
 cache:
  — bundler
 script:
+  - ./bin/webpack
   - bin/rails db:create 
   - bin/rails db:migrate
   - bundle exec rspec
