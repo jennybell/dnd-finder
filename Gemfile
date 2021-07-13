@@ -36,6 +36,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'rexml'
   gem 'factory_bot_rails'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
