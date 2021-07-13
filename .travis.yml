@@ -8,7 +8,6 @@ script:
   - bin/rails db:create 
   - bin/rails db:migrate
   - bundle exec rspec
-  - bundle exec rubocop
 services:
  — postgresql
 deploy:
@@ -18,4 +17,4 @@ deploy:
   app: tavern-keepers
   on:
   repo: jennybell/dnd-finder
-  
+  run: rake db:migrate
