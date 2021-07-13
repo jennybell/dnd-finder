@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :location, :rating, :dm, :terms])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:email, :location, :dm])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email location rating dm terms])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[email location dm])
   end
 end
