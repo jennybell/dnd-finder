@@ -21,6 +21,27 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <input type="hidden" name="user[rating]" id="user_rating" value="0">
+  </div>
+
+  <div class="field">
+    <%= f.check_box :dm %>
+    <%= f.label :dm, "Would you class yourself a Dungoen Master" %><br />
+  </div>
+
+  <div class="field">
+    <%= f.check_box :terms %>
+    <%= f.label :terms, "I agree to the terms and conditions" %><br />
+  </div>
+
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
