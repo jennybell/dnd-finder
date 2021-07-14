@@ -4,6 +4,14 @@
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
+<p>
+  <strong>Users:</strong>
+  <% if @users != nil %>
+    <% @users.each do |user| %>
+      <br><%= user.user.email %>
+    <% end %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
