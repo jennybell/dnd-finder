@@ -8,10 +8,14 @@
   <strong>Users:</strong>
   <% if @users != nil %>
     <% @users.each do |user| %>
-      <br><%= user.user.email %>
+      <br><%= user.user.username %>
     <% end %>
   <% end %>
 </p>
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
+<br><br>
+<% if !GroupUser.where(group_id: @group.id, user_id: current_user.id).exists? %>
+  <%= button_to "Join", group_join_path(@group) %>
+<% end %>
