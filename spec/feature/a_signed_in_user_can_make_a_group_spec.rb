@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'Groups' do 
+<<<<<<< HEAD
   scenario 'user can create a group' do 
     visit '/' 
     click_link 'Sign up'
@@ -10,6 +11,10 @@ feature 'Groups' do
     fill_in 'Password confirmation', with: 'password123' 
     fill_in 'Location', with: "London"
     click_button 'Sign up'
+=======
+  scenario 'a signed in user can create a group' do 
+    sign_up
+>>>>>>> 5a32bca (added avatar functionality with default image)
     click_link 'Taverns'
     click_link 'New Group'
     fill_in 'Name', with: 'test group'
