@@ -23,9 +23,14 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
+    @user = current_user
 
     respond_to do |format|
       if @group.save
+        @user_group = GroupUser.create(group_id: @group.id, user_id: @user.id)
+        # everytime a user is invited into a group a new row in the groupuser table will be created 
+        # with their user id and the group id. users within a group can be found by accessing 
+        # every entry that has the groups id attached and then pulls all user_id's from those entries
         format.html { redirect_to @group, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else

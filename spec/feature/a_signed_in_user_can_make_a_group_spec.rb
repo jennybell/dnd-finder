@@ -12,6 +12,6 @@ feature 'Groups' do
     click_link 'New Group'
     fill_in 'Name', with: 'test group'
     click_button 'Create Group'
-    expect(page).to have_content 'test group'
+    expect(page).to have_content 'test@example.com'
   end
 end
