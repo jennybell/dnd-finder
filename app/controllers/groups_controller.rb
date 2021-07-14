@@ -42,6 +42,13 @@ class GroupsController < ApplicationController
     end
   end
 
+  def join 
+    user = current_user
+    group = params[:group_id]
+    GroupUser.create(group_id: group, user_id: user.id)
+    redirect_to group_path(group)
+  end
+
   # PATCH/PUT /groups/1 or /groups/1.json
   def update
     respond_to do |format|
