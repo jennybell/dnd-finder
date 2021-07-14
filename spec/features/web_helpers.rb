@@ -11,3 +11,9 @@ def sign_up
   check "user_terms"
   click_button "Sign up"
 end
+
+def log_in
+  fill_in 'Email', with: 'test@example.com'
+  fill_in 'Password', with: 'password123'
+  click_button 'Log in'
+end
