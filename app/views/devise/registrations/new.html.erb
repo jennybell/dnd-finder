@@ -2,6 +2,10 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="field">
+    <%= f.label "Avatar" %>
+    <%= f.file_field :avatar %><br>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -41,7 +45,7 @@
 
   <div class="field">
     <%= f.check_box :dm %>
-    <%= f.label :dm, "Would you class yourself a Dungoen Master" %><br />
+    <%= f.label :dm, "Would you class yourself a Dungeon Master" %><br />
   </div>
 
   <div class="field">
