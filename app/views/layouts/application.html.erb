@@ -14,8 +14,62 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <div class="nav-circle-container">
+        <div class="nav-circle">
+          <button id="close">
+            <i class="fas fa-times"></i>
+          </button>
+          <button id="open">
+            <i class="fas fa-bars"></i>
+          </button>
+          
+        </div>
+      </div>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="/"><i class="far fa-id-card"></i> Profile</li></a>
+        <li><a href="/groups"><i class="fas fa-home"></i> Taverns</li></a>
+        <li><i class="fas fa-book-open"></i> About</li>
+      </ul>
+    </nav>
+
+    <script>
+      console.log('srcipt in html')
+
+      function navbar() {
+        const open = document.getElementById('open')
+        const close = document.getElementById('close')
+        const container = document.querySelector('.container')
+
+        open.addEventListener('click', (event) => {
+          event.preventDefault();
+          console.log('open clicked')
+          container.classList.add('show-nav')
+        })
+
+        close.addEventListener('click', (event) => {
+          event.preventDefault();
+          console.log('close clicked')
+          container.classList.remove('show-nav')
+        })
+
+        window.addEventListener('click', () => {
+          console.log('Page Clicked')
+          console.log(open)
+          console.log(close)
+          console.log(container)
+        })
+      }
+
+      navbar()
+      
+    </script>
+    
   </body>
 </html>
