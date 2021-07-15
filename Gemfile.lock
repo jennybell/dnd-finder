@@ -101,6 +101,7 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.3)
+    geocoder (1.6.7)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.10)
@@ -284,6 +285,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_bot_rails
+  geocoder
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.3)
