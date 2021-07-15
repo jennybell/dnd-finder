@@ -2,5 +2,9 @@ class Group < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :users, through: :group_user
   has_many :messages
+<<<<<<< HEAD
   has_many :invitations
+=======
+  has_many :games
+>>>>>>> c8f1fc1 (added games migrations)
 end
