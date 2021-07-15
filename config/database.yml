@@ -42,4 +42,3 @@ test:
 production:
   <<: *default
   database: pgapp_production
-
