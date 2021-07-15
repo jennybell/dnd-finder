@@ -13,8 +13,6 @@ class GroupsController < ApplicationController
     @messages = Message.all
     @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
-    p @users
-    p current_user
   end
 
   # GET /groups/new
