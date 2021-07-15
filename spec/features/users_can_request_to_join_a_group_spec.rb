@@ -5,12 +5,30 @@ feature 'Joining groups' do
     sign_up_create_group_and_sign_up_2nd_user
     click_link 'Taverns'
     click_link 'Show'
-    click_link 'Request'
+    click_button 'Request'
     click_link 'Profile'
     click_link 'Sign Out'
     fill_in 'Email', with: 'test@example.com' 
     fill_in 'Password', with: 'password123'
     click_button 'Log in'
-    expect(page).to have_link 'Accept'
+    click_link 'Taverns'
+    click_link 'Show'
+    expect(page).to have_content 'testuser2'
+  end
+
+  scenario 'admins can accept requests for users to join their group' do
+    sign_up_create_group_and_sign_up_2nd_user
+    click_link 'Taverns'
+    click_link 'Show'
+    click_button 'Request'
+    click_link 'Profile'
+    click_link 'Sign Out'
+    fill_in 'Email', with: 'test@example.com' 
+    fill_in 'Password', with: 'password123'
+    click_button 'Log in'
+    click_link 'Taverns'
+    click_link 'Show'
+    click_link 'Accept'
+    expect(page).to have_content 'testuser2'
   end
 end

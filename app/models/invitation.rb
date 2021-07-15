@@ -1,4 +1,3 @@
 class Invitation < ApplicationRecord
-  belongs_to :sender
-  belongs_to :receiver
+  belongs_to :sender, class_name: 'User'
 end
