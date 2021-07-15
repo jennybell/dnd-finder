@@ -39,7 +39,7 @@ test:
 #   <<: *default
 #   database: db/production.sqlite3
 
-  production:
+production:
   <<: *default
   database: pgapp_production
 
