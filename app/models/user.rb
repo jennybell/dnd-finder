@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :invitations
 
   has_one_attached :avatar
+
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
 end

@@ -4,7 +4,7 @@ def sign_up
   fill_in 'Email', with: 'test@example.com' 
   fill_in 'Username', with: 'testuser'
   select 'Neutral', from: 'Alignment'
-  fill_in 'Location', with: 'London'
+  fill_in 'Address', with: 'London, UK'
   fill_in "Bio", with: 'testing profile'
   check "user_dm"
   fill_in 'Password', with: 'password123' 
@@ -18,7 +18,7 @@ def sign_up_without_avatar
   fill_in 'Email', with: 'test@example.com' 
   fill_in 'Username', with: 'testuser'
   select 'Neutral', from: 'Alignment'
-  fill_in 'Location', with: 'London'
+  fill_in 'Address', with: 'London, UK'
   fill_in "Bio", with: 'testing profile'
   check "user_dm"
   fill_in 'Password', with: 'password123' 
@@ -32,7 +32,7 @@ def sign_up_2nd_user
   fill_in 'Email', with: 'test2@example.com' 
   fill_in 'Username', with: 'testuser2'
   select 'Neutral', from: 'Alignment'
-  fill_in 'Location', with: 'London'
+  fill_in 'Address', with: 'London, UK'
   fill_in "Bio", with: 'testing profile'
   check "user_dm"
   fill_in 'Password', with: 'password123' 
@@ -48,7 +48,7 @@ def sign_up_create_group_and_sign_up_2nd_user
   fill_in 'Name', with: 'test group'
   click_button 'Create Group'
   visit '/' 
-  click_link 'Sign Out'
+  click_link 'Log Out'
   sign_up_2nd_user
 end
 
