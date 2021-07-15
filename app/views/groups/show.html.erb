@@ -18,30 +18,36 @@
 
 <br><br>
 
-<% @users.each do |user| %>
-  <% if user.user.id == current_user.id %>
-    <% @requests.each do |request| %>
-      <p> <%= request.sender.username %> "requests to join your party - " 
-        <%= link_to 'Accept', group_invitations_path(user_id: request.sender.id, group_id: @group.id), method: 'patch' %> </p>
+<% if GroupUser.where(group_id: @group.id, user_id: current_user.id, admin: true).exists? %>
+  <% @users.each do |user| %>
+    <% if user.user.id == current_user.id %>
+      <% @requests.each do |request| %>
+        <p> <%= request.sender.username %> "requests to join your party - " 
+          <%= link_to 'Accept', group_invitations_path(user_id: request.sender.id, group_id: @group.id), method: 'patch' %> </p>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
+
 
 <% if !GroupUser.where(group_id: @group.id, user_id: current_user.id).exists? && !Invitation.where(group_id: @group.id, sender_id: current_user.id).exists? %>
   <%= button_to "Request", group_invitations_path(@group) %> 
 <% end %>
 
-<% @messages.each do |message| %>
-  <br><strong><%= message.user.username %></strong>
-  <br><%= message.content %>
-<% end %>
+<% if GroupUser.where(group_id: @group.id, user_id: current_user.id).exists? %>
+  <% @messages.each do |message| %>
+    <br><strong><%= message.user.username %></strong>
+    <br><%= message.content %>
+  <% end %>
 
-<%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
-  <p>
-    Add message: <br>
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit "Send" %>
-  </p>
+
+  <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
+    <p>
+      Add message: <br>
+      <%= f.text_area :content %>
+    </p>
+    <p>
+      <%= f.submit "Send" %>
+    </p>
+  <% end %>
 <% end %>
