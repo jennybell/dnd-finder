@@ -15,31 +15,15 @@
 
   <body>
     <div class="container">
-      <div class="nav-circle-container">
-        <div class="nav-circle">
-          <button id="close">
-            <i class="fas fa-times"></i>
-          </button>
-          <button id="open">
-            <i class="fas fa-bars"></i>
-          </button>
-          
-        </div>
-      </div>
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
+      <% if current_user %>
+        <%= render 'shared/navbar' %>
+      <% end %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
     </div>
-
-    <nav>
-      <ul>
-        <li><a href="/"><i class="far fa-id-card"></i> Profile</li></a>
-        <li><a href="/groups"><i class="fas fa-home"></i> Taverns</li></a>
-        <!-- <li><i class="fas fa-book-open"></i> About</li> -->
-        <li><a rel="nofollow" data-method="delete" href="/users/sign_out"><i class="fas fa-sign-out-alt"></i> Log Out</a></li>
-          <!-- <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %> -->
-      </ul>
-    </nav>
+      <%= render 'shared/navbtns' %>
+    
 
   </body>
 </html>
