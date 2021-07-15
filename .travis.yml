@@ -1,11 +1,11 @@
-language: 
+language:
  — ruby
 rvm:
  — 3.0.0
 cache:
  — bundler
 script:
-  - bin/rails db:create 
+  - bin/rails db:create
   - bin/rails db:migrate
   # - bundle exec rspec --color --format documentation --require spec_helper --require rails_helper
 services:
@@ -16,5 +16,4 @@ deploy:
     secure: "FO+FcC+R7yiiVP74ZYCUM+Bj1edWP9ExleJ+76Fhmqw2SebgOwlxLWukPG25mAWUU35sKn+5+a9RPo0jgtTxumj7sGV+FDVoFK2fU9RJU4w2iYkpvtffAsHD9WDFQ2ERnftGkx1TgwvsZU5KY8SP58qZPWsbx565IYk6hLAuJhzh65KR7JISB0erOL+rIVrYtP5xZGbvGWue8ZgdjGItc5sZ98mq/PmCqOSNPxHeAKhAE9k5hkWAFseTB7kn53j1xW6XdfuZywhOq3kJ5ED1qhFyLaxGqfPBcC3aCJpdq3GGgwL7v+sf24B7qeYIEFOxHrX+eR9atQtk/WjppRpSRlscxwahXUwDtN9I9RX9/siYBskAOWZop2CPhjPC2GM8qnesv9jE76Pj9CwrXzDTb6hat50A1+HetnuOXJJZSEo2qUA6ijAfJoTvY8qm0G0I9O+b/Z5EobwvQxty9XXaVv0dA/IULw6sDEp432hXPhgmf7BzyF0Y2rr0pusO0cz89ZbzQfk+1bT/vEfwKbWB6kbT4cdOKVb3rpR4P7DrnXy/2+J+Kv6aZ7znULkrWK2pQdoBW5/m1MDf5j1jgAMy5yzEnRXd9Unjaf4kZYz3utlJUyyIqRRh/23hj1zKWX0JtHax2kVWeX+2rQnfrIQHx1WdP9abnUAvXIEo30hngo0="
   app: tavern-keepers
   on:
-  repo: jennybell/dnd-finder
   run: rake db:migrate
