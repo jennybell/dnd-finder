@@ -87,7 +87,9 @@ ActiveRecord::Schema.define(version: 2021_07_15_130219) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "location"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.integer "rating", default: 0
     t.boolean "dm", default: false
     t.boolean "terms", default: false
