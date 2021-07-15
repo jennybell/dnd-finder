@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
     group_id = params[:id]
     @messages = Message.all
     @users = GroupUser.where(group_id: group_id)
+    @games = Game.all
   end
 
   # GET /groups/new
