@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :groups do 
-    post '/join', to: 'groups#join'
-    post '/message', to: 'messages#create'
+    post 'invitations/create', to: 'invitations#create'
+    post 'join', to: 'groups#join'
+    post 'message', to: 'messages#create'
   end
 
   devise_for :users 
