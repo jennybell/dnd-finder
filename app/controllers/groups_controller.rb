@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1 or /groups/1.json
   def show
     group_id = params[:id]
+    @messages = Message.all
     @users = GroupUser.where(group_id: group_id)
   end
 
@@ -30,9 +31,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         @user_group = GroupUser.create(group_id: @group.id, user_id: @user.id)
-        # everytime a user is invited into a group a new row in the groupuser table will be created 
-        # with their user id and the group id. users within a group can be found by accessing 
-        # every entry that has the groups id attached and then pulls all user_id's from those entries
         format.html { redirect_to @group, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
