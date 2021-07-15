@@ -41,19 +41,15 @@ def sign_up_2nd_user
   click_button "Sign up"
 end
 
-def sign_up_create_group_and_sign_up_2nd_user
-  sign_up
-  click_link 'Taverns'
-  click_link 'New Group'
-  fill_in 'Name', with: 'test group'
-  click_button 'Create Group'
-  visit '/' 
-  click_link 'Sign Out'
-  sign_up_2nd_user
-end
-
 def log_in
   fill_in 'Email', with: 'test@example.com'
   fill_in 'Password', with: 'password123'
   click_button 'Log in'
+end
+
+def create_group
+  visit '/groups'
+  click_link 'New Group'
+  fill_in 'Name', with: 'test group'
+  click_button 'Create Group'
 end
