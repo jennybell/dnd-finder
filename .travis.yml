@@ -1,13 +1,13 @@
-language:
+language: 
  — ruby
 rvm:
  — 3.0.0
 cache:
  — bundler
 script:
-  - bin/rails db:create
+  - bin/rails db:create 
   - bin/rails db:migrate
-  # - bundle exec rspec --color --format documentation --require spec_helper --require rails_helper
+  - bundle exec rspec
 services:
  — postgresql
 deploy:
