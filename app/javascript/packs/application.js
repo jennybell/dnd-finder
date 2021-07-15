@@ -11,3 +11,35 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener("turbolinks:load", function() {
+  navbarTransform()
+})
+
+console.log('page loaded')
+
+function navbarTransform() {
+
+  const open = document.getElementById('open')
+  const close = document.getElementById('close')
+  const container = document.querySelector('.container')
+
+  open.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('open clicked')
+    container.classList.add('show-nav')
+  })
+
+  close.addEventListener('click', (event) => {
+    event.preventDefault();
+    console.log('close clicked')
+    container.classList.remove('show-nav')
+  })
+
+  window.addEventListener('click', () => {
+    console.log('Page Clicked')
+    console.log(open)
+    console.log(close)
+    console.log(container)
+  })
+}
