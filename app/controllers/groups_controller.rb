@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
   def show
     group_id = params[:id]
     @messages = Message.all
+    @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
   end
 
@@ -30,7 +31,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        @user_group = GroupUser.create(group_id: @group.id, user_id: @user.id)
+        @user_group = GroupUser.create(group_id: @group.id, user_id: @user.id, admin: true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
