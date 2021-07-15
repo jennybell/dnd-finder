@@ -1,84 +1,115 @@
-<h2>Sign up</h2>
+<div class="reg-land-page">
+  <div class="center-content-container">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <%= f.label "Avatar" %>
-    <%= f.file_field :avatar %><br>
+    <div class="left-content-container">
+      <%= image_tag("dice.png", :alt => "Game Dice Logo", :class => "logo") %>
+      <h1 class="land-page-title">Tavern Keepers</h1>
+      <h3 class="land-page-subtitle">Find D&D Friends Near You</h3>
+    </div>
+
+    <div class="right-content-container">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="reg-box">
+        <div class="email">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+        </div>
+        <div class="username">
+          <%= f.label :username %><br />
+          <%= f.text_field :username, required: true %>
+        </div>
+      </div>
+
+      <div class="reg-box">
+        <div class="avatar">
+          <%= f.label "Avatar" %>
+          <%= f.file_field :avatar %><br>
+        </div>
+        <div class="alignment">
+          <%= f.label :alignment %><br />
+          <!-- <%= f.text_field :alignment, required: true %> -->
+          <select name="user[alignment]" id="user_alignment" required>
+            <option value="Lawful Good">Lawful Good</option>
+            <option value="Nuetral Good">Neutral Good</option>
+            <option value="Chaotic Good">Chaotic Good</option>
+            <option value="Lawful Neutral">Lawful Neutral</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Chaotic Neutral">Chaotic Neutral</option>
+            <option value="Lawful Evil">Lawful Evil</option>
+            <option value="Neutral Evil">Neutral Evil</option>
+            <option value="Chaotic Evil">Chaotic Evil</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="reg-box">
+        <div class="address">
+          <%= f.label :address %><br />
+          <%= f.text_field :address, placeholder: "Street, City, Country", required: true %>
+        </div>
+      </div>
+
+      <div class="reg-box">
+        <div class="bio">
+          <%= f.label :bio %><br />
+          <!-- <%= f.text_area :bio %> -->
+          <textarea name="user[bio]" id="user_bio" placeholder="Let your allies know a more about you."></textarea>
+        </div>
+      </div>
+
+      <div class="reg-box">
+        <div class="dm">
+          <%= f.check_box :dm %>
+          <%= f.label :dm, "Would you class yourself a Dungeon Master" %>
+        </div>
+      </div>
+
+      <div class="reg-box">
+        <div class="password">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", required: true %>
+        </div>
+  
+        <div class="password">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      </div>
+
+      <div class="reg-box">
+        <div class="terms">
+          <%= f.check_box :terms, required: true %>
+          <%= f.label :terms, "I agree to the terms and conditions", required: true %><br />
+        </div>
+      </div>
+      
+
+      <!-- <div class="field">
+        <%= f.label :latitude %><br />
+        <%= f.text_field :latitude %>
+      </div>
+
+      <div class="field">
+        <%= f.label :longitude %><br />
+        <%= f.text_field :longitude %>
+      </div> -->
+      <div class="reg-btn">
+        <div class="sign-up-btn">
+          <%= f.submit "Sign up", :class => "sign-up-btn" %>
+        </div>
+      </div>
+      
+      <% end %>
+      <div class="reg-link">
+        <p>Already an ally?</p>
+        <%= render "devise/shared/links" %>
+      </div>
+      
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, required: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :alignment %><br />
-    <!-- <%= f.text_field :alignment, required: true %> -->
-    <select name="user[alignment]" id="user_alignment" required>
-      <option value="Lawful Good">Lawful Good</option>
-      <option value="Nuetral Good">Neutral Good</option>
-      <option value="Chaotic Good">Chaotic Good</option>
-      <option value="Lawful Neutral">Lawful Neutral</option>
-      <option value="Neutral">Neutral</option>
-      <option value="Chaotic Neutral">Chaotic Neutral</option>
-      <option value="Lawful Evil">Lawful Evil</option>
-      <option value="Neutral Evil">Neutral Evil</option>
-      <option value="Chaotic Evil">Chaotic Evil</option>
-    </select>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br />
-    <%= f.text_field :address, required: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </div>
-
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio %>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :dm %>
-    <%= f.label :dm, "Would you class yourself a Dungeon Master" %><br />
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", required: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.check_box :terms, required: true %>
-    <%= f.label :terms, "I agree to the terms and conditions", required: true %><br />
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
