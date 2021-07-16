@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Groups' do 
   scenario 'user can create a group' do 
     sign_up
-    click_link 'Taverns'
+    visit '/groups'
     click_link 'New Group'
     fill_in 'Name', with: 'test group'
     click_button 'Create Group'

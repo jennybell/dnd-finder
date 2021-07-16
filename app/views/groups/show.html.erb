@@ -65,7 +65,6 @@
     <%= message.content %> <br>
   <% end %>
 
-
   <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
     <p>
       Add message: <br>
@@ -75,4 +74,23 @@
       <%= f.submit "Send" %>
     </p>
   <% end %>
+<% end %>
+
+<% if GroupUser.where(group_id: @group.id, user_id: current_user.id, admin: true).exists? %>
+  <%= form_with url: group_games_path(@group) do |f| %>
+    <h3>Schedule a game</h3>
+    <%= f.label :date%><br>
+    <%= f.date_field :date%>
+    <br>
+    <%= f.label :time%><br>
+    <%= f.time_field :time%><br><br>
+    <%= f.submit "Schedule game" %>
+  <% end %>
+<% end %>
+
+<% @games.each do |game| %>
+  <br>
+  <%= game.date %>
+  <br>
+  <%= game.time.strftime("%k:%M") %>
 <% end %>

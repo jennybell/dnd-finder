@@ -41,19 +41,52 @@ def sign_up_2nd_user
   click_button "Sign up"
 end
 
-def sign_up_create_group_and_sign_up_2nd_user
-  sign_up
-  click_link 'Taverns'
-  click_link 'New Group'
-  fill_in 'Name', with: 'test group'
-  click_button 'Create Group'
-  visit '/' 
-  click_link 'Log Out'
-  sign_up_2nd_user
-end
-
 def log_in
   fill_in 'Email', with: 'test@example.com'
   fill_in 'Password', with: 'password123'
   click_button 'Log in'
+end
+
+def create_group
+  visit '/groups'
+  click_link 'New Group'
+  fill_in 'Name', with: 'test group'
+  click_button 'Create Group'
+end
+
+def join_group
+  visit '/groups'
+  click_link 'Show'
+  click_button 'Join'
+end
+
+def send_group_request
+  click_link 'Taverns'
+  click_link 'Show'
+  click_button 'Request'
+end
+
+def sign_in
+  visit '/'
+  fill_in 'Email', with: 'test@example.com' 
+  fill_in 'Password', with: 'password123'
+  click_button 'Log in'
+end
+
+def sign_in_second_user
+  visit '/'
+  fill_in 'Email', with: 'test2@example.com'
+  fill_in 'Password', with: 'password123'
+  click_button 'Log in'
+end
+
+def accept_group_request
+  click_link 'Taverns'
+  click_link 'Show'
+  click_link 'Accept'
+end
+
+def log_out
+  visit '/'
+  click_link 'Log Out'
 end
