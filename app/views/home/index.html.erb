@@ -26,8 +26,41 @@
 <h1>User Terms</h1>
 <%= @user.terms %> <br>
 
+<h1>List of users and distance</h1>
 <ul>
 <% for user in @user.nearbys(10) %>
   <li><%= user.username %> <%= user.address %> <%= user.distance.round(1) %> Miles</li>
 <% end %>
+</ul>
+
+<h1>List of all Users</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.username %></li>
+  <% end %>
+</ul>
+
+<h1>List of your groups</h1>
+
+<ul>
+  <% @groups.each do |group| %>
+    <% group.group_users.each do |group_user| %>
+      <% if current_user.id === group_user.user_id %>
+        <li><%= group.name %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>
+
+<h1>List of groups you are not a part of</h1>
+
+<ul>
+  <% @groups.each do |group| %>
+    <% group.group_users.each do |group_user| %>
+      <% if current_user.id != group_user.user_id %>
+        <li><%= group.name %></li>
+      <% end %>
+    <% end %>
+  <% end %>
 </ul>
