@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     post 'join', to: 'groups#join'
     post 'message', to: 'messages#create'
     resources :games
+    patch 'dm', to: 'groups#assign_dm'
   end
 
   devise_for :users 

@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1 or /groups/1.json
   def show
     group_id = params[:id]
-    @messages = Message.all
+    @messages = Message.where(group_id: group_id)
     @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
     @games = Game.all
@@ -21,6 +21,15 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def assign_dm 
+    user = params[:user_id]
+    group = params[:group_id]
+    dm = GroupUser.where(group_id: group, user_id: user).first
+    dm.update_column(:dm, true)
+    p dm
+    redirect_to group_path(group)
+  end
+
   # GET /groups/1/edit
   def edit
   end
@@ -28,11 +37,10 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
-    @user = current_user
 
     respond_to do |format|
       if @group.save
-        @user_group = GroupUser.create(group_id: @group.id, user_id: @user.id, admin: true)
+        @user_group = GroupUser.create(group_id: @group.id, user_id: current_user.id, admin: true)
         format.html { redirect_to @group, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
@@ -40,13 +48,6 @@ class GroupsController < ApplicationController
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def join 
-    user = current_user
-    group = params[:group_id]
-    GroupUser.create(group_id: group, user_id: user.id)
-    redirect_to group_path(group)
   end
 
   # PATCH/PUT /groups/1 or /groups/1.json
@@ -78,6 +79,8 @@ class GroupsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # @user_group = GroupUser.create(group_id: @group.id, user_id: current_user.id, admin: true)
+
     def group_params
       params.require(:group).permit(:name)
     end

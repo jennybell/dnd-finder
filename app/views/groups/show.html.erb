@@ -4,16 +4,41 @@
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
+<br>
 <p>
-  <strong>Users:</strong>
-  <% if @users != nil %>
-    <% @users.each do |user| %>
-      <br><%= user.user.username %>
-    <% end %>
-  <% end %>
-</p>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
+<% if GroupUser.where(group_id: @group.id, admin: true).exists? %>
+  <strong>Admin:</strong>
+<% end %>
+<% @users.each do |user| %>
+  <% if user.admin? %>
+    <br> <%= user.user.username %> 
+  <% end %>
+<% end %>
+<br>
+
+<% if GroupUser.where(group_id: @group.id, admin: nil, dm: true).exists? %>
+  <strong>DM:</strong>
+<% end %>
+<% @users.each do |user| %>
+  <% if !user.admin? && user.dm? %>
+    <br> <%= user.user.username %>
+  <% end %>
+<% end %>
+<br>
+
+<% if GroupUser.where(group_id: @group.id, admin: nil, dm: nil).exists? %>
+  <strong>Players:</strong>
+<% end %>
+<% @users.each do |user| %>
+  <% if !user.admin? && !user.dm? %>
+    <br> <%= user.user.username %> - <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: user), method: 'patch' %>
+  <% end %>
+<% end %>
+
+
+</p>
+<br>
 <%= link_to 'Back', groups_path %>
 
 <br><br>
@@ -28,6 +53,9 @@
       <% end %>
     <% end %>
   <% end %>
+
+  <%= link_to 'Edit', edit_group_path(@group) %>
+
 <% end %>
 
 
@@ -38,7 +66,7 @@
 <% if GroupUser.where(group_id: @group.id, user_id: current_user.id).exists? %>
   <% @messages.each do |message| %>
     <br><strong><%= message.user.username %></strong>
-    <br><%= message.content %>
+    <%= message.content %> <br>
   <% end %>
 
   <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
