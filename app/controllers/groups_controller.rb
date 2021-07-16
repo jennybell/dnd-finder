@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1 or /groups/1.json
   def show
     group_id = params[:id]
-    @messages = Message.all
+    @messages = Message.where(group_id: group_id)
     @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
   end
@@ -18,6 +18,15 @@ class GroupsController < ApplicationController
   # GET /groups/new
   def new
     @group = Group.new
+  end
+
+  def assign_dm 
+    user = params[:user_id]
+    group = params[:group_id]
+    dm = GroupUser.where(group_id: group, user_id: user).first
+    dm.update_column(:dm, true)
+    p dm
+    redirect_to group_path(group)
   end
 
   # GET /groups/1/edit
