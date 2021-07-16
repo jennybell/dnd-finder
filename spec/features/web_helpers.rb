@@ -59,3 +59,34 @@ def join_group
   click_link 'Show'
   click_button 'Join'
 end
+
+def send_group_request
+  click_link 'Taverns'
+  click_link 'Show'
+  click_button 'Request'
+end
+
+def sign_in
+  visit '/'
+  fill_in 'Email', with: 'test@example.com' 
+  fill_in 'Password', with: 'password123'
+  click_button 'Log in'
+end
+
+def sign_in_second_user
+  visit '/'
+  fill_in 'Email', with: 'test2@example.com'
+  fill_in 'Password', with: 'password123'
+  click_button 'Log in'
+end
+
+def accept_group_request
+  click_link 'Taverns'
+  click_link 'Show'
+  click_link 'Accept'
+end
+
+def log_out
+  visit '/'
+  click_link 'Log Out'
+end

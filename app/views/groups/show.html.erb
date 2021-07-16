@@ -64,16 +64,6 @@
     </p>
   <% end %>
 
-
-  <%= form_with url: group_games_path(@group) do |f| %>
-    <%= f.label :date%><br>
-    <%= f.date_field :date%>
-    <br>
-    <%= f.label :time%><br>
-    <%= f.time_field :time%><br>
-    <%= f.submit "Schedule game" %>
-  <% end %>
-
   <% @games.each do |game| %>
     <br>
     <%= game.date %>
