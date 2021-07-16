@@ -7,9 +7,7 @@ feature 'Groups' do
     visit '/'
     click_link 'Sign Out'
     sign_up_2nd_user
-    visit '/groups'
-    click_link 'Show'
-    click_button 'Join'
+    join_group
     expect(page).to have_content 'testuser'
     expect(page).to have_content 'testuser2'
   end   
