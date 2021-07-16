@@ -21,13 +21,11 @@
 }
 
 body {
-  
   overflow-x: hidden;
   margin: 0;
   background-image: url('https://images.unsplash.com/photo-1528458965990-428de4b1cb0d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=970&q=80');
   background-size: cover;
   background-position: bottom left;
-  box-sizing: border-box;
   box-shadow: inset 3500px 0 0 0 rgba(0, 0, 0, 0.6);
   border-color: rgba(0, 0, 0, 1);
   animation-duration: 0.4s;
@@ -262,6 +260,21 @@ nav ul li + li + li {
   font-family: 'MedievalSharp', cursive;
 }
 
+.email-password-login {
+  width: 100%;
+  padding: 5px;
+}
+
+.email-password-login input {
+  width: 98%;
+  height: 25px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0 5px;
+  font-family: 'MedievalSharp', cursive;
+}
+
 .username {
   width: 50%;
   padding: 5px;
@@ -387,4 +400,214 @@ nav ul li + li + li {
   color: #dcdcdc;
   text-decoration: none;
   font-family: 'MedievalSharp', cursive;
+}
+
+/* HOME PAGE AND USER PAGE */
+
+.user-land-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://pbs.twimg.com/media/DYz364kXcAEORfq.jpg');
+  background-size: cover;
+  box-shadow: inset 3500px 0 0 0 rgba(0, 0, 0, 0.8);
+  border-color: rgba(0, 0, 0, 1);
+  color: #dcdcdc; /* ! This must be removed */
+}
+
+.page-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 15%;
+  background-image: url('https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Ribbons-and-Banners-PNG/Business_Yellow_Banner_PNG_Clipart.png?m=1574418010');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.65);
+}
+
+.page-banner h1 {
+  font-size: 50px;
+  color: rgb(107, 0, 0);
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.65);
+}
+
+.user-page-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 75%;
+}
+
+.user-left-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 40%;
+  height: 100%;
+}
+
+.user-right-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  height: 100%;
+}
+
+.avatar-username {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 95%;
+  height: 40%;
+  padding: 10px;
+  position: relative;
+  margin-top: 30px;
+  border: 2px solid pink;
+}
+
+.avatar-username img {
+  width: 35%;
+  border: 22px outset #A42121;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  margin: 0;
+  margin-right: 30px;
+  box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.user-details p {
+  line-height: 1.5;
+}
+
+.username {
+  padding: 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.user-bio {
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.dm-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-image: url('https://images.unsplash.com/photo-1545873509-33e944ca7655?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80');
+  background-size: cover;
+  position: absolute;
+  top: 2%;
+  left: 36%;
+  transform: rotate(-30deg);
+  border: 8px outset #A42121;
+}
+
+.dm-badge-text {
+  color: black;
+  font-size: 20px;
+}
+
+.users-nearby {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 95%;
+  height: 60%;
+  padding: 10px;
+  border: 2px solid pink;
+}
+
+.users-nearby h1:nth-of-type(1) {
+  margin: 15px 0;
+}
+
+.nearby-user {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 95%;
+  margin: 10px 0 10px 0;
+}
+
+.nearby-user img {
+  width: 35px;
+  height: 35px;
+  border: 5px solid red;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+}
+
+.avatar-dm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  position: relative;
+}
+
+.nearby-user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.nearby-user-details h2 {
+  margin-bottom: 5px;
+}
+
+.nearby-dm-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-image: url('https://images.unsplash.com/photo-1545873509-33e944ca7655?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1952&q=80');
+  background-size: cover;
+  position: absolute;
+  top: 0%;
+  left: 65%;
+  transform: rotate(-30deg);
+  border: 2px solid #ff0000;
+}
+
+.nearby-dm-badge-text {
+  color: black;
+  font-size: 10px;
 }
