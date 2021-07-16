@@ -16,11 +16,22 @@
   <% end %>
 <% end %>
 <br>
-<% if GroupUser.where(group_id: @group.id, admin: nil).exists? %>
+
+<% if GroupUser.where(group_id: @group.id, admin: nil, dm: true).exists? %>
+  <strong>DM:</strong>
+<% end %>
+<% @users.each do |user| %>
+  <% if !user.admin? && user.dm? %>
+    <br> <%= user.user.username %>
+  <% end %>
+<% end %>
+<br>
+
+<% if GroupUser.where(group_id: @group.id, admin: nil, dm: nil).exists? %>
   <strong>Players:</strong>
 <% end %>
 <% @users.each do |user| %>
-  <% if !user.admin? %>
+  <% if !user.admin? && !user.dm? %>
     <br> <%= user.user.username %> - <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: user), method: 'patch' %>
   <% end %>
 <% end %>
