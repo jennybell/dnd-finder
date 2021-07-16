@@ -25,7 +25,6 @@ class GroupsController < ApplicationController
     group = params[:group_id]
     dm = GroupUser.where(group_id: group, user_id: user).first
     dm.update_column(:dm, true)
-    p dm
     redirect_to group_path(group)
   end
 
