@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Group Chat' do 
   scenario 'a user can send messages in their group' do 
     sign_up
-    click_link 'Taverns'
+    visit '/groups'
     click_link 'New Group'
     fill_in 'Name', with: 'test group'
     click_button 'Create Group'

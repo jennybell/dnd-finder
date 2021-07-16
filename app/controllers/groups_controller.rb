@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
     @messages = Message.where(group_id: group_id)
     @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
+    @games = Game.all
   end
 
   # GET /groups/new
@@ -25,7 +26,6 @@ class GroupsController < ApplicationController
     group = params[:group_id]
     dm = GroupUser.where(group_id: group, user_id: user).first
     dm.update_column(:dm, true)
-    p dm
     redirect_to group_path(group)
   end
 
