@@ -4,7 +4,7 @@
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
-
+<br>
 <p>
 
 <% if GroupUser.where(group_id: @group.id, admin: true).exists? %>
@@ -24,7 +24,7 @@
 
 
 </p>
-
+<br>
 <%= link_to 'Back', groups_path %>
 
 <br><br>
@@ -52,7 +52,7 @@
 <% if GroupUser.where(group_id: @group.id, user_id: current_user.id).exists? %>
   <% @messages.each do |message| %>
     <br><strong><%= message.user.username %></strong>
-    <br><%= message.content %>
+    <%= message.content %> <br>
   <% end %>
 
 
