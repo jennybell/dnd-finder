@@ -15,7 +15,10 @@
     <br> <%= user.user.username %> 
   <% end %>
 <% end %>
-  <br><strong>Players:</strong>
+<br>
+<% if GroupUser.where(group_id: @group.id, admin: nil).exists? %>
+  <strong>Players:</strong>
+<% end %>
 <% @users.each do |user| %>
   <% if !user.admin? %>
     <br> <%= user.user.username %> 
