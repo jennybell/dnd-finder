@@ -59,7 +59,7 @@
     <%= f.date_field :date%>
     <br>
     <%= f.label :time%><br>
-    <%= f.time_field :time%><br>
+    <%= f.time_field :time%><br><br>
     <%= f.submit "Schedule game" %>
   <% end %>
 <% end %>
@@ -68,5 +68,5 @@
   <br>
   <%= game.date %>
   <br>
-  <%= game.time %>
+  <%= game.time.strftime("%k:%M") %>
 <% end %>
