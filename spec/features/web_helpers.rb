@@ -53,3 +53,9 @@ def create_group
   fill_in 'Name', with: 'test group'
   click_button 'Create Group'
 end
+
+def join_group
+  visit '/groups'
+  click_link 'Show'
+  click_button 'Join'
+end
