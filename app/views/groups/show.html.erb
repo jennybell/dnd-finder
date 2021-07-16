@@ -4,13 +4,25 @@
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
+
 <p>
-  <strong>Users:</strong>
-  <% if @users != nil %>
-    <% @users.each do |user| %>
-      <br><%= user.user.username %>
-    <% end %>
+
+<% if GroupUser.where(group_id: @group.id, admin: true).exists? %>
+  <strong>Admin:</strong>
+<% end %>
+<% @users.each do |user| %>
+  <% if user.admin? %>
+    <br> <%= user.user.username %> 
   <% end %>
+<% end %>
+  <br><strong>Players:</strong>
+<% @users.each do |user| %>
+  <% if !user.admin? %>
+    <br> <%= user.user.username %> 
+  <% end %>
+<% end %>
+
+
 </p>
 
 <%= link_to 'Back', groups_path %>
@@ -29,7 +41,7 @@
   <% end %>
 
   <%= link_to 'Edit', edit_group_path(@group) %>
-  
+
 <% end %>
 
 

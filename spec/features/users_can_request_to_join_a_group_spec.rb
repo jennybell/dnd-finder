@@ -13,7 +13,7 @@ feature 'Joining groups' do
     click_button 'Log in'
     click_link 'Taverns'
     click_link 'Show'
-    expect(page).to have_content 'testuser2'
+    expect(page).to have_link 'Accept'
   end
 
   scenario 'admins can accept requests for users to join their group' do
