@@ -20,6 +20,14 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def assign_dm 
+    user = params[:user_id]
+    group = params[:group_id]
+    dm = GroupUser.where(group_id: group, user_id: user)
+    dm.update_column(:dm, true)
+    redirect_to group_path(group)
+  end
+
   # GET /groups/1/edit
   def edit
   end
