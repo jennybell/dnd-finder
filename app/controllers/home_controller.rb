@@ -3,5 +3,8 @@ class HomeController < ApplicationController
 
   def index 
       @user = User.find(current_user.id)
+      @users = User.all
+      @groups = Group.all
+      @group_users = GroupUser.all
   end
 end

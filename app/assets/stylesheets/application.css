@@ -53,6 +53,12 @@ a {
   color: inherit;
 }
 
+a:hover {
+  color: inherit;
+  outline: none;
+  background-color: inherit;
+}
+
 p {
   font-family: 'MedievalSharp', cursive;
 }
