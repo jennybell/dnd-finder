@@ -1,66 +1,109 @@
-<h1>Home Page</h1>
-<p>This will be the current User's profile</p>
+<div class="user-land-page">
+  <div class="page-banner">
+    <h1 class="banner-heading">Tavern Keepers</h1>
+  </div>
+  <div class="user-page-content-container">
+    <div class="user-left-content-container">
+      <div class="avatar-username">
+        <%= image_tag avatar_for(@user), class: "avatar" %>
+        <% if @user.dm %>
+        <div class="dm-badge">
+          <p class="dm-badge-text">DM</p>
+        </div>
+        <% end %>
+        <div class="user-details">
+          <h1 class="username"><%= @user.username %></h1>
+          <p><i class="fas fa-at"></i> <%= @user.email %></p>
+          <p><i class="fas fa-map-marker-alt"></i> <%= @user.address %></p>
+          <p>Rating: <%= @user.rating %></p>
+          <p><i class="fas fa-level-up-alt"></i> <%= @user.alignment %></p>
+          <p class="user-bio"><i class="fas fa-book-open"></i> <%= @user.bio %></p>
+        </div>
+      </div>
+      <div class="users-nearby">
+        <h1>Allies Within 10 Miles</h1>
+        <% for user in @user.nearbys(10) %>
+        <div class="nearby-user">
+          <div class="avatar-dm">
+            <%= image_tag avatar_for(user), class: "nearby-avatar" %>
+            <% if user.dm %>
+            <div class="nearby-dm-badge">
+              <p class="nearby-dm-badge-text">DM</p>
+            </div>
+            <% end %>
+          </div>
+          <div class="nearby-user-details">
+            <h2><%= user.username %></h2>
+            <p><%= user.distance.round(1) %> Miles, Rating: <%= user.rating %>, Alignment: <%= user.alignment %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
 
-<h1>Avatar</h1>
-<%= image_tag avatar_for(@user), class: "avatar" %>
-<h1>User Id</h1>
-<%= @user.id %> <br>
-<h1>User Email</h1>
-<%= @user.email %> <br>
-<h1>User Username</h1>
-<%= @user.username %> <br>
-<h1>User Address</h1>
-<%= @user.address %> <br>
-<h1>User Latitude</h1>
-<%= @user.latitude %> <br>
-<h1>User Longitude</h1>
-<%= @user.longitude %> <br>
-<h1>User Rating</h1>
-<%= @user.rating %> <br>
-<h1>User Alignment</h1>
-<%= @user.alignment %> <br>
-<h1>User Dungeon Master</h1>
-<%= @user.dm %> <br><br> 
-<h1>User Bio</h1>
-<%= @user.bio %> <br>
-<h1>User Terms</h1>
-<%= @user.terms %> <br>
+    <div class="user-right-content-container">
 
-<h1>List of users and distance</h1>
-<ul>
-<% for user in @user.nearbys(10) %>
-  <li><%= user.username %> <%= user.address %> <%= user.distance.round(1) %> Miles</li>
-<% end %>
-</ul>
+      <div class="top-right">
+        
+        <div class="not-users-groups">
+          <div class="group-heading">
+            <h1>All Taverns</h1>
+          </div>
+          
+          <div class="user-group">
+            <% @groups.each do |group| %>
+            <% group.group_users.each do |group_user| %>
+            <% if current_user.id != group_user.user_id %>
+              <div class="group-details">
+              <h2 class="group-name"><%= group.name %></h2>
+              <p>Allys <%= group.group_users.length %></p>
+            </div>
+            <% end %>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div class="all-users">
+          <h1>List of all Users</h1>
+          <% for user in @user.nearbys(10) %>
+          <div class="all-user">
+            <div class="all-avatar-dm">
+              <%= image_tag avatar_for(user), class: "nearby-avatar" %>
+              <% if user.dm %>
+              <div class="nearby-dm-badge">
+                <p class="nearby-dm-badge-text">DM</p>
+              </div>
+              <% end %>
+            </div>
+            <div class="nearby-user-details">
+              <h2><%= user.username %></h2>
+              <p>Rating: <%= user.rating %>, Alignment: <%= user.alignment %></p>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
 
-<h1>List of all Users</h1>
+      
+      <div class="users-groups">
+        <div class="group-heading">
+          <h1>Your Taverns</h1>
+        </div>
+        <div class="user-group">
+          <% @groups.each do |group| %>
+          <% group.group_users.each do |group_user| %>
+          <% if current_user.id == group_user.user_id %>
+            <div class="group-details">
+            <h2 class="group-name"><%= group.name %></h2>
+            <p>Allys <%= group.group_users.length %></p>
+          </div>
+          <% end %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
 
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.username %></li>
-  <% end %>
-</ul>
-
-<h1>List of your groups</h1>
-
-<ul>
-  <% @groups.each do |group| %>
-    <% group.group_users.each do |group_user| %>
-      <% if current_user.id === group_user.user_id %>
-        <li><%= group.name %></li>
-      <% end %>
-    <% end %>
-  <% end %>
-</ul>
-
-<h1>List of groups you are not a part of</h1>
-
-<ul>
-  <% @groups.each do |group| %>
-    <% group.group_users.each do |group_user| %>
-      <% if current_user.id != group_user.user_id %>
-        <li><%= group.name %></li>
-      <% end %>
-    <% end %>
-  <% end %>
-</ul>
+  </div>
+</div>
