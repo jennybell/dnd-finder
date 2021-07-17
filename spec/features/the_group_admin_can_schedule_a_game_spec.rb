@@ -21,7 +21,7 @@ feature "schedule games" do
     log_out
     sign_in_second_user
     visit '/groups'
-    click_link 'Show'
+    click_link 'test group'
     expect(page).not_to have_content("Schedule a game")
   end
 end
