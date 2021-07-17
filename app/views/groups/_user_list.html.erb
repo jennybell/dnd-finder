@@ -23,6 +23,9 @@
 <% end %>
 <% @users.each do |user| %>
   <% if !user.admin? && !user.dm? %>
-    <br> <%= user.user.username %> - <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: user.user.id), method: 'patch' %>
+    <br> <%= user.user.username %> 
+    <% if !@user.nil? && @user.admin? %> 
+      - <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: user.user.id), method: 'patch' %>
+    <% end %>
   <% end %>
 <% end %>
