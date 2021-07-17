@@ -1,4 +1,4 @@
-<% if GroupUser.where(group_id: @group.id, user_id: current_user.id, admin: true).exists? %>
+<% if !@user.nil? && @user.admin? %>
   <%= form_with url: group_games_path(@group) do |f| %>
     <h3>Schedule a game</h3>
     <%= f.label :date%><br>

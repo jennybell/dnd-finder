@@ -1,4 +1,4 @@
-<% if GroupUser.where(group_id: @group.id, user_id: current_user.id, admin: true).exists? %>
+<% if !@user.nil? && @user.admin? %>
   <% @requests.each do |request| %>
     <p> <%= request.sender.username %> "requests to join your party - " 
       <%= link_to 'Accept', group_invitations_path(user_id: request.sender.id, group_id: @group.id), method: 'patch' %> </p>

@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1 or /groups/1.json
   def show
     group_id = params[:id]
+    @user = GroupUser.where(group_id: group_id, user_id: current_user.id).first
     @messages = Message.where(group_id: group_id)
     @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
