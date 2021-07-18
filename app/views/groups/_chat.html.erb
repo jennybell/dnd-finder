@@ -1,0 +1,16 @@
+<% if !@user.nil? %>
+  <% @messages.each do |message| %>
+    <br><strong><%= message.user.username %></strong>
+    <%= message.content %> <br>
+  <% end %>
+
+  <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
+    <p>
+      Add message: <br>
+      <%= f.text_area :content %>
+    </p>
+    <p>
+      <%= f.submit "Send" %>
+    </p>
+  <% end %>
+<% end %>

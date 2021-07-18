@@ -10,7 +10,7 @@ feature 'Joining groups' do
     log_out
     log_in
     click_link 'Taverns'
-    click_link 'Show'
+    click_link 'test group'
     expect(page).to have_link 'Accept'
   end
 

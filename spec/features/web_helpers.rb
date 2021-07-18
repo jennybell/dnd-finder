@@ -54,15 +54,14 @@ def create_group
   click_button 'Create Group'
 end
 
-def join_group
+def enter_group
   visit '/groups'
-  click_link 'Show'
-  click_button 'Join'
+  click_link 'test group'
 end
 
 def send_group_request
   click_link 'Taverns'
-  click_link 'Show'
+  click_link 'test group'
   click_button 'Request'
 end
 
@@ -82,7 +81,7 @@ end
 
 def accept_group_request
   click_link 'Taverns'
-  click_link 'Show'
+  click_link 'test group'
   click_link 'Accept'
 end
 
