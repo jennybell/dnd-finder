@@ -10,7 +10,9 @@
 <div>
   <strong>Game Information:</strong><br>
   <%= @group.information %>
-  <%= link_to 'Edit Game Information', edit_group_path(@group), method: 'get' %>
+  <% if !@user.nil? && (@user.admin? || @user.dm?) %>
+    <%= link_to 'Edit Game Information', edit_group_path(@group), method: 'get' %>
+  <% end %>
 </div>
 
 <br>
