@@ -13,14 +13,10 @@
         <% end %>
         <div class="user-details">
           <h1 class="username"><%= @user.username %></h1>
-          <!-- <p><i class="fas fa-at"></i> <%= @user.email %></p> -->
           <p><i class="fas fa-map-marker-alt"></i> <%= @user.address %></p>
           <p>Rating: <%= @user.rating %></p>
           <p><i class="fas fa-level-up-alt"></i> <%= @user.alignment %></p>
           <p class="user-bio"><i class="fas fa-book-open"></i> <%= @user.bio %></p>
-        </div>
-        <div class="user-profile-buttons">
-          <a href="/users/edit">Edit</a>
         </div>
       </div>
       <div class="users-nearby">
@@ -28,7 +24,7 @@
         <% for user in @user.nearbys(10) %>
         <div class="nearby-user">
           <div class="avatar-dm">
-            <a href="/users/<%= user.id %>"><%= image_tag avatar_for(user), class: "nearby-avatar" %></a>
+            <%= image_tag avatar_for(user), class: "nearby-avatar" %>
             <% if user.dm %>
             <div class="nearby-dm-badge">
               <p class="nearby-dm-badge-text">DM</p>
@@ -36,7 +32,7 @@
             <% end %>
           </div>
           <div class="nearby-user-details">
-            <h2><a href="/users/<%= user.id %>"><%= user.username %></a></h2>
+            <h2><%= user.username %></h2>
             <p><%= user.distance.round(1) %> Miles, Rating: <%= user.rating %>, Alignment: <%= user.alignment %></p>
           </div>
         </div>
@@ -56,9 +52,9 @@
           <div class="user-group">
             <% @groups.each do |group| %>
             <% group.group_users.each do |group_user| %>
-            <% if current_user.id != group_user.user_id %>
+            <% if @user.id != group_user.user_id %>
               <div class="group-details">
-              <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
+              <h2 class="group-name"><%= group.name %></h2>
               <p>Allys <%= group.group_users.length %></p>
             </div>
             <% end %>
@@ -68,10 +64,10 @@
         </div>
         <div class="all-users">
           <h1>List of all Users</h1>
-          <% @users.each do |user| %>
+          <% for user in @user.nearbys(10) %>
           <div class="all-user">
             <div class="all-avatar-dm">
-              <a href="/users/<%= user.id %>"><%= image_tag avatar_for(user), class: "nearby-avatar" %></a>
+              <%= image_tag avatar_for(user), class: "nearby-avatar" %>
               <% if user.dm %>
               <div class="nearby-dm-badge">
                 <p class="nearby-dm-badge-text">DM</p>
@@ -79,7 +75,7 @@
               <% end %>
             </div>
             <div class="nearby-user-details">
-              <h2><a href="/users/<%= user.id %>"><%= user.username %></a></h2>
+              <h2><%= user.username %></h2>
               <p>Rating: <%= user.rating %>, Alignment: <%= user.alignment %></p>
             </div>
           </div>
@@ -95,9 +91,9 @@
         <div class="user-group">
           <% @groups.each do |group| %>
           <% group.group_users.each do |group_user| %>
-          <% if current_user.id == group_user.user_id %>
+          <% if @user.id == group_user.user_id %>
             <div class="group-details">
-            <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
+            <h2 class="group-name"><%= group.name %></h2>
             <p>Allys <%= group.group_users.length %></p>
           </div>
           <% end %>
@@ -105,7 +101,6 @@
           <% end %>
         </div>
       </div>
-      
     </div>
 
   </div>
