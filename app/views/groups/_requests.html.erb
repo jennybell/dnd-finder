@@ -1,3 +1,5 @@
-<% if @user.nil? && !Invitation.where(group_id: @group.id, sender_id: current_user.id).exists? %>
-  <%= button_to "Request", group_invitations_path(@group) %> 
+<% if @users.length < @group.party_size %>
+  <% if @user.nil? && !Invitation.where(group_id: @group.id, sender_id: current_user.id).exists? %>
+    <%= button_to "Request", group_invitations_path(@group) %> 
+  <% end %> 
 <% end %>
