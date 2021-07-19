@@ -1,6 +1,6 @@
 <% if !@user.nil? && @user.admin? %>
   <% @requests.each do |request| %>
-    <p> <%= request.sender.username %> "requests to join your party - " 
+    <p> <%= request.sender.username %> - <%= request.character_name %>, <%= request.character_race %> <%= request.character_class %> requests to join your party -  
       <%= link_to 'Accept', group_invitations_path(user_id: request.sender.id, group_id: @group.id), method: 'patch' %> </p>
   <% end %>
 
