@@ -97,9 +97,17 @@
           <% group.group_users.each do |group_user| %>
           <% if current_user.id == group_user.user_id %>
             <div class="group-details">
-            <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
-            <p>Allys <%= group.group_users.length %></p>
+              <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
+              <p>
+                Allys <%= group.group_users.length %>
+                <% group.invitations.each do |invitation| %>
+                <% if invitation.confirmed == false %>
+                  <span class="invite"></span>
+                <% end %>
+              <% end %>
+              </p>
           </div>
+          
           <% end %>
           <% end %>
           <% end %>

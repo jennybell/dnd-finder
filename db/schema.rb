@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2021_07_19_150200) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.bigint "message_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["message_id"], name: "index_comments_on_message_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.date "date"
     t.time "time"
@@ -120,6 +129,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_150200) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "messages"
   add_foreign_key "games", "groups"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     patch 'dm', to: 'groups#assign_dm'
   end
 
+  resources :messages do
+    resources :comments
+  end
+
   devise_for :users 
   resource :users
   match '/users/:id', to: 'users#show', via: 'get'

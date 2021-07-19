@@ -20,6 +20,12 @@
   font-family: 'MedievalSharp', cursive;
 }
 
+.invite {
+  padding: 3px;
+  border-radius: 50%;
+  background-color: green;
+}
+
 body {
   overflow-x: hidden;
   margin: 0;
