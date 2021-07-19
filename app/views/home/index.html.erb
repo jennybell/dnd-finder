@@ -58,7 +58,7 @@
             <% group.group_users.each do |group_user| %>
             <% if current_user.id != group_user.user_id %>
               <div class="group-details">
-              <h2 class="group-name"><%= group.name %></h2>
+              <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
               <p>Allys <%= group.group_users.length %></p>
             </div>
             <% end %>
@@ -97,7 +97,7 @@
           <% group.group_users.each do |group_user| %>
           <% if current_user.id == group_user.user_id %>
             <div class="group-details">
-            <h2 class="group-name"><%= group.name %></h2>
+            <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
             <p>Allys <%= group.group_users.length %></p>
           </div>
           <% end %>
