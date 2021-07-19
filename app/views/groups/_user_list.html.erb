@@ -1,31 +1,31 @@
 <% if GroupUser.where(group_id: @group.id, admin: true).exists? %>
   <strong>Admin:</strong>
 <% end %>
-<% @users.each do |user| %>
-  <% if user.admin? %>
-    <br> <%= user.user.username %> 
+<% @users.each do |group_user| %>
+  <% if group_user.admin? %>
+    <br> <%= group_user.user.username %> 
   <% end %>
 <% end %>
 <br>
 
-<% if GroupUser.where(group_id: @group.id, admin: nil, dm: true).exists? %>
+<% if GroupUser.where(group_id: @group.id, admin: false, dm: true).exists? %>
   <strong>DM:</strong>
 <% end %>
-<% @users.each do |user| %>
-  <% if !user.admin? && user.dm? %>
-    <br> <%= user.user.username %>
+<% @users.each do |group_user| %>
+  <% if !group_user.admin? && group_user.dm? %>
+    <br> <%= group_user.user.username %>
   <% end %>
 <% end %>
 <br>
 
-<% if GroupUser.where(group_id: @group.id, admin: nil, dm: nil).exists? %>
+<% if GroupUser.where(group_id: @group.id, admin: false, dm: false).exists? %>
   <strong>Players:</strong>
 <% end %>
-<% @users.each do |user| %>
-  <% if !user.admin? && !user.dm? %>
-    <br> <%= user.user.username %> 
+<% @users.each do |group_user| %>
+  <% if !group_user.admin? && !group_user.dm? %>
+    <br> <%= group_user.user.username %> 
     <% if !@user.nil? && @user.admin? %> 
-      - <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: user.user.id), method: 'patch' %>
+      - <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: group_user.user.id), method: 'patch' %>
     <% end %>
   <% end %>
 <% end %>

@@ -41,6 +41,20 @@ def sign_up_2nd_user
   click_button "Sign up"
 end
 
+def sign_up_3rd_user 
+  visit("/users/sign_up")
+  fill_in 'Email', with: 'test3@example.com' 
+  fill_in 'Username', with: 'testuser3'
+  select 'Neutral', from: 'Alignment'
+  fill_in 'Address', with: 'London, UK'
+  fill_in "Bio", with: 'testing profile'
+  check "user_dm"
+  fill_in 'Password', with: 'password123' 
+  fill_in 'Password confirmation', with: 'password123'
+  check "user_terms"
+  click_button "Sign up"
+end
+
 def log_in
   fill_in 'Email', with: 'test@example.com'
   fill_in 'Password', with: 'password123'
