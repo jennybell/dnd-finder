@@ -1,0 +1,13 @@
+<%= form_for([@message, @message.comments.build]) do |f| %>
+
+  <p><%= f.label :name %></p>
+  <p>
+    <%= f.label :body %><br/>
+    <%= f.test_area :body %>
+  </p>
+  <br>
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>
