@@ -8,8 +8,9 @@
 <p>Party Size: <%= @users.length %>/<%= @group.party_size %></p>
 
 <div>
-  <strong>Game Information:</strong>
+  <strong>Game Information:</strong><br>
   <%= @group.information %>
+  <%= link_to 'Edit Game Information', edit_group_path(@group), method: 'get' %>
 </div>
 
 <br>

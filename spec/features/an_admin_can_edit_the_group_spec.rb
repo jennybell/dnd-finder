@@ -6,7 +6,7 @@ feature 'Edit Groups' do
     create_group
     click_link 'Edit Group'
     fill_in('Name', with: 'edited test group')
-    click_button 'Update Group'
+    click_button 'Submit'
     expect(page).to have_content 'edited test group'
   end
 

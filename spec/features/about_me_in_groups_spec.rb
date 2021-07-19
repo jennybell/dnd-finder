@@ -18,7 +18,7 @@ feature 'About Me' do
     accept_group_request
     click_link 'Assign DM'
     log_out
-    sign_in_2nd_user
+    sign_in_second_user
     enter_group
     click_link 'Edit Game Information'
     fill_in 'Information', with: 'blaaaaah'

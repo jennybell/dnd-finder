@@ -32,6 +32,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    group = Group.where(id: @group.id)
   end
 
   # POST /groups or /groups.json
