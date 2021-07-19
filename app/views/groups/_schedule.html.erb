@@ -20,4 +20,7 @@
   <%= game.date %>
   <br>
   <%= game.time.strftime("%k:%M") %>
+  <br>
+  <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
+  <%= game.game_responds.count %> Going
 <% end %>
