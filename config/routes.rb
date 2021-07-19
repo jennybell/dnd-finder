@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   end
 
   devise_for :users 
+  resource :users
+  match '/users/:id', to: 'users#show', via: 'get'
   root to: 'home#index'
 end
