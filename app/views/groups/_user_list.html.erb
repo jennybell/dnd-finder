@@ -1,9 +1,9 @@
 <% if GroupUser.where(group_id: @group.id, admin: true).exists? %>
-  <strong>Admin:</strong>
+  <strong>Admin:</strong> <br>
 <% end %>
 <% @users.each do |group_user| %>
   <% if group_user.admin? %>
-    <br> <%= group_user.user.username %> 
+    <%= group_user.user.username %> - <%= group_user.character_name %>, <%= group_user.character_race %> <%= group_user.character_class %>
   <% end %>
 <% end %>
 <br>
