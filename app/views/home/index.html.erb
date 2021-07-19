@@ -28,7 +28,7 @@
         <% for user in @user.nearbys(10) %>
         <div class="nearby-user">
           <div class="avatar-dm">
-            <%= image_tag avatar_for(user), class: "nearby-avatar" %>
+            <a href="/users/<%= user.id %>"><%= image_tag avatar_for(user), class: "nearby-avatar" %></a>
             <% if user.dm %>
             <div class="nearby-dm-badge">
               <p class="nearby-dm-badge-text">DM</p>
@@ -71,7 +71,7 @@
           <% @users.each do |user| %>
           <div class="all-user">
             <div class="all-avatar-dm">
-              <%= image_tag avatar_for(user), class: "nearby-avatar" %>
+              <a href="/users/<%= user.id %>"><%= image_tag avatar_for(user), class: "nearby-avatar" %></a>
               <% if user.dm %>
               <div class="nearby-dm-badge">
                 <p class="nearby-dm-badge-text">DM</p>
@@ -79,7 +79,7 @@
               <% end %>
             </div>
             <div class="nearby-user-details">
-              <h2><%= user.username %></h2>
+              <h2><a href="/users/<%= user.id %>"><%= user.username %></a></h2>
               <p>Rating: <%= user.rating %>, Alignment: <%= user.alignment %></p>
             </div>
           </div>
