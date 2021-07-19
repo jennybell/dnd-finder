@@ -16,7 +16,7 @@ feature 'Character Creation' do
     log_out
     log_in
     enter_group 
-    expect(page).to have_content 'testuser2 - Wally, Catfolk Barbarian'
+    expect(page).to have_content 'testuser2 - Wally, Catfolk Barbarian requests to join your party'
   end
 
   scenario 'once a join request is accepted their character information is displayed in the user list' do 
