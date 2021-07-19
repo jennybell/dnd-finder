@@ -20,10 +20,14 @@ class InvitationsController < ApplicationController
     redirect_to group_path(group)
   end
 
+  def show
+    @group_id = params[:group_id]
+  end
+
   private 
 
   def invitation_params
-    params.permit(:group_id).merge(sender_id: current_user.id, confirmed: false)
+    params.permit(:group_id, :character_name, :character_race, :character_class).merge(sender_id: current_user.id, confirmed: false)
   end
 
   def group_user_params 

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :groups do 
     post 'invitations', to: 'invitations#create'
     patch 'invitations', to: 'invitations#update'
+    get 'invitations', to: 'invitations#show'
     post 'join', to: 'groups#join'
     post 'message', to: 'messages#create'
     resources :games

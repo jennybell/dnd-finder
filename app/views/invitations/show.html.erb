@@ -1,0 +1,27 @@
+<div>
+  <h1>Your Character:</h1>
+</div>
+
+<%= form_with url: group_invitations_path(@group_id), method: 'post' do |form| %>
+
+  <div>
+    <%= form.label :character_name %>
+    <%= form.text_field :character_name %>
+  </div>
+
+  <div>
+    <%= form.label :character_race %>
+    <%= form.text_field :character_race %>
+  </div>
+
+  <div>
+    <%= form.label :character_class %>
+    <%= form.select :character_class, ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'] %>
+  </div>
+
+  <br>
+
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>

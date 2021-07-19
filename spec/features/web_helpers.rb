@@ -81,6 +81,10 @@ def send_group_request
   click_link 'Taverns'
   click_link 'test group'
   click_button 'Request'
+  fill_in 'Character name', with: 'Wally'
+  fill_in 'Character race', with: 'Catfolk'
+  select "Barbarian", from: 'Character class'
+  click_button 'Submit'
 end
 
 def sign_in

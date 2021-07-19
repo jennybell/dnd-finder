@@ -12,12 +12,7 @@ feature 'Character Creation' do
     create_group
     log_out 
     sign_up_2nd_user
-    enter_group
-    click_button 'Request'
-    fill_in 'Character name', with: 'Wally'
-    fill_in 'Character race', with: 'Catfolk'
-    select "Barbarian", from: 'Character class'
-    click_button 'Submit'
+    send_group_request
     log_out
     log_in
     enter_group 
