@@ -48,4 +48,15 @@ feature 'Group Size' do
     enter_group 
     expect(page).not_to have_button 'Request'
   end
+
+  scenario 'group size is set when groups are created' do 
+    sign_up
+    click_link 'Taverns'
+    click_link 'New Group'
+    fill_in 'Name', with: 'test group'
+    select "2", from: 'Party size'
+    click_button "Create Group"
+    click_link "Back"
+    expect(page).to have_content 'test group - 1/2'
+  end
 end 
