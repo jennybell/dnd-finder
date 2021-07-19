@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     patch 'invitations', to: 'invitations#update'
     post 'join', to: 'groups#join'
     post 'message', to: 'messages#create'
-    resources :games
+    resources :games do
+      resources :game_responds
+    end
     patch 'dm', to: 'groups#assign_dm'
   end
 

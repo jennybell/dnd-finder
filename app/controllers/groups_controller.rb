@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     @messages = Message.where(group_id: group_id)
     @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
-    @games = Game.all
+    @games = Game.where(group_id: group_id)
   end
 
   # GET /groups/new

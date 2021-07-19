@@ -89,3 +89,9 @@ def log_out
   visit '/'
   click_link 'Log Out'
 end
+
+def schedule_game
+  fill_in 'Date', with: '24/07/2021'
+  fill_in 'Time', with: '18:00'
+  click_button 'Schedule game'
+end
