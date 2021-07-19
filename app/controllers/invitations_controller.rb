@@ -27,6 +27,6 @@ class InvitationsController < ApplicationController
   end
 
   def group_user_params 
-    params.permit(:user_id, :group_id)
+    params.permit(:user_id, :group_id).merge(dm: false, admin: false)
   end
 end
