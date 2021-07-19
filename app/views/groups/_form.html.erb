@@ -23,6 +23,27 @@
 
   <br>
 
+  <div>
+    <h2>Your Character:</h2>
+  </div>
+
+  <div>
+    <%= form.label :character_name %>
+    <%= form.text_field :character_name %>
+  </div>
+
+  <div>
+    <%= form.label :character_race %>
+    <%= form.text_field :character_race %>
+  </div>
+
+  <div>
+    <%= form.label :character_class %>
+    <%= form.select :character_class, ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'] %>
+  </div>
+
+  <br>
+
   <div class="actions">
     <%= form.submit %>
   </div>

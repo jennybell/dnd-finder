@@ -40,7 +40,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        @user_group = GroupUser.create(group_id: @group.id, user_id: current_user.id, admin: true)
+        @user_group = GroupUser.create(group_user_params)
         format.html { redirect_to @group, notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
@@ -83,5 +83,9 @@ class GroupsController < ApplicationController
 
     def group_params
       params.require(:group).permit(:name, :party_size)
+    end
+
+    def group_user_params
+      params.require(:group).permit(:character_name, :character_race, :character_class).merge(group_id: @group.id, user_id: current_user.id, admin: true)
     end
 end
