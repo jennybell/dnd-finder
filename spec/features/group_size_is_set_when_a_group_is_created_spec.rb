@@ -18,12 +18,12 @@ feature 'Group Size' do
     fill_in 'Name', with: 'test group'
     select "2", from: 'Party size'
     click_button "Create Group"
-    log_out
+    sign_out
     sign_up_2nd_user
     send_group_request
     expect(page).to have_content 'Party Size: 1/2'
-    log_out
-    log_in
+    sign_out
+    sign_in
     enter_group
     click_link 'Accept'
     expect(page).to have_content 'Party Size: 2/2'
@@ -36,14 +36,14 @@ feature 'Group Size' do
     fill_in 'Name', with: 'test group'
     select "2", from: 'Party size'
     click_button "Create Group"
-    log_out
+    sign_out
     sign_up_2nd_user
     send_group_request
-    log_out
-    log_in
+    sign_out
+    sign_in
     enter_group
     click_link 'Accept'
-    log_out
+    sign_out
     sign_up_3rd_user
     enter_group 
     expect(page).not_to have_button 'Request'
