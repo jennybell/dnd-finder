@@ -1,4 +1,5 @@
-<%= form_with(model: group) do |form| %>
+<div class="chat-form">
+  <%= form_with(model: group) do |form| %>
   <% if group.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
@@ -63,3 +64,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+

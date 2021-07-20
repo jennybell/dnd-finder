@@ -1,28 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="taverns-land-page">
 
-<%= render 'group_info' %>
+  <div class="page-banner">
+    <h1 class="banner-heading">Tavern Keepers</h1>
+  </div>
+  <div class="taverns-center-container">
+    <%= render 'group_info' %>
+
+    <br>
+
+    <p><%= render 'user_list' %></p>
+
+    <br>
+
+    <%= link_to 'Back', groups_path %>
+
+    <br>
+
+    <%= render 'admin_functions' %>
+
+    <br>
+
+    <%= render 'requests' %>
+
+    <br>
+
+    <%= render 'chat' %>
+
+    <br>
+
+    <%= render 'schedule' %>
+  </div>
 
 
-<br>
-
-<p><%= render 'user_list' %></p>
-
-<br>
-
-<%= link_to 'Back', groups_path %>
-
-<br>
-
-<%= render 'admin_functions' %>
-
-<br>
-
-<%= render 'requests' %>  
-
-<br>
-
-<%= render 'chat' %>
-
-<br>
-
-<%= render 'schedule' %>
+</div>

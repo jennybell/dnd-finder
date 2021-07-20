@@ -20,7 +20,7 @@ feature 'About Me' do
     sign_out
     sign_in_second_user
     enter_group
-    click_link 'Edit Game Information'
+    find('a', class: 'edit-btn').click
     fill_in 'Information', with: 'blaaaaah'
     click_button 'Submit'
     expect(page).to have_content 'blaaaaah'

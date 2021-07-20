@@ -8,7 +8,7 @@ feature 'Group Size' do
     fill_in 'Name', with: 'test group'
     select "2", from: 'Party size'
     click_button "Create Group"
-    expect(page).to have_content 'Party Size: 1/2'
+    expect(page).to have_content '1 Ally of 2'
   end
 
   scenario 'group size increases when a user request to join is accepted' do
@@ -21,12 +21,12 @@ feature 'Group Size' do
     sign_out
     sign_up_2nd_user
     send_group_request
-    expect(page).to have_content 'Party Size: 1/2'
+    expect(page).to have_content '1 Ally of 2'
     sign_out
     sign_in
     enter_group
     click_link 'Accept'
-    expect(page).to have_content 'Party Size: 2/2'
+    expect(page).to have_content '2 Allies of 2'
   end
 
   scenario 'users cannot request to join a full game' do 
