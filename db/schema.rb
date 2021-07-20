@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_103500) do
+ActiveRecord::Schema.define(version: 2021_07_19_150200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2021_07_19_103500) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "name"
+    t.text "body"
+    t.bigint "message_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["message_id"], name: "index_comments_on_message_id"
+  end
+
   create_table "game_responds", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "game_id", null: false
@@ -68,6 +77,9 @@ ActiveRecord::Schema.define(version: 2021_07_19_103500) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin"
     t.boolean "dm"
+    t.text "character_name"
+    t.text "character_race"
+    t.text "character_class"
     t.index ["group_id"], name: "index_group_users_on_group_id"
     t.index ["user_id"], name: "index_group_users_on_user_id"
   end
@@ -76,6 +88,8 @@ ActiveRecord::Schema.define(version: 2021_07_19_103500) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "party_size"
+    t.text "information"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -84,6 +98,9 @@ ActiveRecord::Schema.define(version: 2021_07_19_103500) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "group_id", null: false
+    t.text "character_name"
+    t.text "character_race"
+    t.text "character_class"
     t.index ["group_id"], name: "index_invitations_on_group_id"
     t.index ["sender_id"], name: "index_invitations_on_sender_id"
   end
@@ -121,6 +138,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_103500) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "messages"
   add_foreign_key "game_responds", "games"
   add_foreign_key "game_responds", "users"
   add_foreign_key "games", "groups"
