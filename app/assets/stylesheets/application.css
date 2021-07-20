@@ -14,7 +14,7 @@
 *= require_self
 */
 
-* { 
+* {
   padding: 0;
   margin: 0;
   font-family: 'MedievalSharp', cursive;
@@ -76,6 +76,7 @@ p {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -134,7 +135,7 @@ p {
   transform-origin: top left;
 }
 
-.container.show-nav + nav li {
+.container.show-nav+nav li {
   transform: translateX(0);
   transition-delay: 0.3s;
 }
@@ -171,12 +172,12 @@ nav ul li i {
   color: #fafafa;
 }
 
-nav ul li + li {
+nav ul li+li {
   margin-left: 15px;
   transform: translateX(-150%);
 }
 
-nav ul li + li + li {
+nav ul li+li+li {
   margin-left: 30px;
   transform: translateX(-200%);
 }
@@ -188,7 +189,7 @@ nav ul li + li + li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100%;
+  min-height: 100vh;
   width: 100vw;
   background-image: url('https://i.pinimg.com/originals/7f/66/78/7f66782d3be428660cae59d52628427e.jpg');
   background-size: cover;
@@ -243,9 +244,9 @@ nav ul li + li + li {
   justify-content: center;
   width: 80%;
   border-radius: 10px;
-  box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -webkit-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -moz-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
 }
 
 .reg-box {
@@ -426,7 +427,8 @@ nav ul li + li + li {
   background-size: cover;
   box-shadow: inset 3500px 0 0 0 rgba(0, 0, 0, 0.8);
   border-color: rgba(0, 0, 0, 1);
-  color: #dcdcdc; /* ! This must be removed */
+  color: #dcdcdc;
+  /* ! This must be removed */
 }
 
 .page-banner {
@@ -491,9 +493,9 @@ nav ul li + li + li {
   padding: 0;
   margin: 0;
   margin-right: 15px;
-  box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -webkit-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -moz-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
 }
 
 .user-details {
@@ -522,7 +524,7 @@ nav ul li + li + li {
 }
 
 .user-bio::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 .user-bio::-webkit-scrollbar-track {
@@ -570,7 +572,7 @@ nav ul li + li + li {
 }
 
 .users-nearby::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 .users-nearby::-webkit-scrollbar-track {
@@ -602,9 +604,9 @@ nav ul li + li + li {
   object-fit: cover;
   object-position: center;
   padding: 0;
-  box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -webkit-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -moz-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
 }
 
 .avatar-dm {
@@ -724,7 +726,7 @@ nav ul li + li + li {
 }
 
 .all-users::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 .all-users::-webkit-scrollbar-track {
@@ -762,14 +764,109 @@ nav ul li + li + li {
   object-fit: cover;
   object-position: center;
   padding: 0;
-  box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -webkit-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
-  -moz-box-shadow: 11px 10px 46px -1px rgba(0,0,0,0.81);
+  box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
 }
 
 .group-heading h1 {
   margin: 5px 0 10px 0;
 }
+
+/* TARVERNS STYLING */
+
+.taverns-center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+}
+
+.taverns-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  margin: 30px auto;
+}
+
+.taverns {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+}
+
+.tavern {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 25px;
+  border: 12px outset #e6c407;
+}
+
+.tavern-image {
+  width: 50%;
+}
+
+.tavern-image img {
+  width: 70%;
+  max-height: 90%;
+  border: 12px outset #A42121;
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  margin: 0;
+  margin-right: 15px;
+  box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+}
+
+.tavern-details {
+  width: 50%;
+  line-height: 2;
+}
+
+.new-group-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6c407;
+  height: 35px;
+  width: 35px;
+  border: 2px solid #998200;
+  border-radius: 50%;
+  position: absolute;
+  left: 90%;
+  top: 90%;
+  box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -webkit-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: 11px 10px 46px -1px rgba(0, 0, 0, 0.81);
+  transition: 0.3s ease-in-out;
+}
+
+.new-group-btn:hover {
+  transform: scale(1.2);
+}
+
+.new-group-btn a:hover {
+  transform: none;
+}
+
+.fa-users {
+  font-size: 22px;
+  color: rgb(107, 0, 0);
+}
+
+
+
 
 @media only screen and (max-width: 1200px) {
   .reg-land-page {
@@ -779,7 +876,7 @@ nav ul li + li + li {
   .user-land-page {
     min-height: 100%;
   }
-  
+
   .center-content-container {
     flex-direction: column;
     min-height: 80vh;
@@ -812,19 +909,19 @@ nav ul li + li + li {
     height: 100%;
     width: 50%;
   } */
-  
+
   .left-content-container {
     width: 70%;
   }
-  
+
   .right-content-container {
     width: 70%;
   }
-  
+
   .right-content-container form {
     width: 80%;
   }
-  
+
   .reg-box {
     width: 98%;
   }
@@ -834,29 +931,29 @@ nav ul li + li + li {
   .user-land-page {
     min-height: 100%;
   }
-  
+
   .page-banner {
     height: 12%;
   }
-  
+
   .page-banner h1 {
     font-size: 2.3rem;
     margin-bottom: 15px;
   }
-  
+
   .user-page-content-container {
     width: 95%;
     height: 80%;
   }
-  
+
   .user-right-content-container {
     width: 60%;
   }
-  
+
   .not-users-groups {
     width: 38%;
   }
-  
+
   .all-users {
     width: 60%;
   }
@@ -958,7 +1055,7 @@ nav ul li + li + li {
     width: 100vw;
     padding-top: 50px;
   }
-  
+
   .center-content-container {
     flex-direction: column;
     align-items: center;
@@ -966,109 +1063,109 @@ nav ul li + li + li {
     min-height: 100%;
     width: 100vw;
   }
-  
+
   .left-content-container {
     height: 50%;
     width: 70%;
     margin-bottom: 60px;
   }
-  
+
   .land-page-title {
     font-size: 30px;
     margin: 15px 0;
   }
-  
+
   .logo {
     width: 30%;
   }
-  
+
   .right-content-container {
     height: 1000px;
     width: 100%;
     padding: 10px 0;
   }
-  
+
   .right-content-container form {
     width: 90%;
     height: 1000px;
   }
-  
+
   .reg-box {
     flex-direction: column;
     width: 100%;
     height: 200px;
   }
-  
+
   .email {
     width: 90%;
     padding: 5px;
   }
-  
+
   .email input {
     width: 100%;
   }
-  
+
   .email-password-login {
     width: 90%;
     padding: 5px;
   }
-  
+
   .email-password-login input {
     width: 100%;
   }
-  
+
   .username {
     width: 90%;
     padding: 5px;
   }
-  
+
   .username input {
     width: 100%;
   }
-  
+
   .avatar {
     width: 90%;
     padding-left: 5px;
-  
+
   }
-  
+
   .alignment {
     width: 90%;
   }
-  
+
   .address {
     width: 90%;
     padding: 5px;
   }
-  
+
   .address input {
     width: 100%;
   }
-  
+
   .bio {
     width: 90%;
     padding: 5px;
   }
-  
+
   .bio textarea {
     width: 100%;
   }
-  
+
   .dm {
     width: 90%;
     margin: 40px auto;
   }
-  
+
   .dm input {
     transform: scale(1.5);
     margin-right: 15px;
   }
-  
+
   .password {
     width: 90%;
     padding: 5px;
   }
-  
+
   .password input {
     width: 100%;
   }
@@ -1077,12 +1174,12 @@ nav ul li + li + li {
     width: 90%;
     margin: 40px auto;
   }
-  
+
   .terms input {
     transform: scale(1.5);
     margin-right: 15px;
   }
-  
+
   .reg-btn {
     width: 100%;
   }
@@ -1090,68 +1187,68 @@ nav ul li + li + li {
   .user-land-page {
     min-height: 350vh;
   }
-  
+
   .page-banner h1 {
     font-size: 1.5rem;
   }
-  
+
   .user-left-content-container {
     flex-direction: column;
     width: 100%;
     height: 100%;
   }
-  
+
   .avatar-username {
     width: 95%;
     height: 45%;
   }
-  
+
   .avatar-username img {
     width: 30%;
   }
-  
+
   .dm-badge {
     top: 1%;
     left: 31%;
   }
-  
+
   .users-nearby {
     width: 95%;
     height: 50%;
   }
-  
+
   .user-right-content-container {
     flex-direction: column;
     width: 100%;
     height: 100%;
   }
-  
+
   .top-right {
     flex-direction: column;
     width: 95%;
     height: 45%;
   }
-  
+
   .users-groups {
     width: 95%;
     height: 50%;
   }
-  
+
   .user-group {
     width: 98%;
     height: 100%;
   }
-  
+
   .group-details h2 {
     margin: 10px 30px 5px 0;
   }
-  
+
   .not-users-groups {
     width: 100%;
     height: 300px;
     padding: 10px;
   }
-  
+
   .all-users {
     width: 100%;
     height: 500px;

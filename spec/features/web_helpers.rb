@@ -63,7 +63,7 @@ end
 
 def create_group
   visit '/groups'
-  click_link 'New Group'
+  find('a', class: 'link_btn').click
   fill_in 'Name', with: 'test group'
   fill_in 'Information', with: 'Hello noobs!'
   select "2", from: 'Party size'

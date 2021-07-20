@@ -4,7 +4,7 @@ feature 'Group Size' do
   scenario 'group size is set when groups are created' do 
     sign_up
     click_link 'Taverns'
-    click_link 'New Group'
+    find('a', class: 'link_btn').click
     fill_in 'Name', with: 'test group'
     select "2", from: 'Party size'
     click_button "Create Group"
@@ -14,7 +14,7 @@ feature 'Group Size' do
   scenario 'group size increases when a user request to join is accepted' do
     sign_up
     click_link 'Taverns'
-    click_link 'New Group'
+    find('a', class: 'link_btn').click
     fill_in 'Name', with: 'test group'
     select "2", from: 'Party size'
     click_button "Create Group"
@@ -32,7 +32,7 @@ feature 'Group Size' do
   scenario 'users cannot request to join a full game' do 
     sign_up
     click_link 'Taverns'
-    click_link 'New Group'
+    find('a', class: 'link_btn').click
     fill_in 'Name', with: 'test group'
     select "2", from: 'Party size'
     click_button "Create Group"
@@ -52,11 +52,11 @@ feature 'Group Size' do
   scenario 'group size is set when groups are created' do 
     sign_up
     click_link 'Taverns'
-    click_link 'New Group'
+    find('a', class: 'link_btn').click
     fill_in 'Name', with: 'test group'
     select "2", from: 'Party size'
     click_button "Create Group"
     click_link "Back"
-    expect(page).to have_content 'test group - 1/2'
+    expect(page).to have_content '1 Ally of 2'
   end
 end 

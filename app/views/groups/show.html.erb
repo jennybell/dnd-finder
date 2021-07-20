@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Name:</strong>
@@ -6,8 +6,11 @@
 </p>
 
 <p>
-  <% if @group.image %>
+  <% if @group.image.attached? %>
   <%= image_tag @group.image %>
+  <% else %>
+  <p>No Image</p>
+    
   <% end %>
 </p>
 
