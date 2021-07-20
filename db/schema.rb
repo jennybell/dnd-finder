@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2021_07_20_094545) do
     t.index ["message_id"], name: "index_comments_on_message_id"
   end
 
+  create_table "game_responds", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_game_responds_on_game_id"
+    t.index ["user_id"], name: "index_game_responds_on_user_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.date "date"
     t.time "time"
@@ -131,6 +140,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_094545) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "messages"
+  add_foreign_key "game_responds", "games"
+  add_foreign_key "game_responds", "users"
   add_foreign_key "games", "groups"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"

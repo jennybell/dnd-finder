@@ -4,11 +4,11 @@ feature 'Joining groups' do
   scenario 'admins can see user requests to join their groups' do
     sign_up
     create_group
-    log_out
+    sign_out
     sign_up_2nd_user
     send_group_request
-    log_out
-    log_in
+    sign_out
+    sign_in
     click_link 'Taverns'
     click_link 'test group'
     expect(page).to have_link 'Accept'
@@ -17,7 +17,7 @@ feature 'Joining groups' do
   scenario 'admins can accept requests for users to join their group' do
     sign_up
     create_group
-    log_out
+    sign_out
     sign_up_2nd_user
     send_group_request
     click_link 'Profile'
