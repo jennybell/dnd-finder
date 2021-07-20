@@ -11,13 +11,13 @@ feature "schedule games" do
   scenario "users who aren't group admin cannot schedule a game" do
     sign_up
     create_group
-    log_out
+    sign_out
     sign_up_2nd_user
     send_group_request
-    log_out
+    sign_out
     sign_in
     accept_group_request
-    log_out
+    sign_out
     sign_in_second_user
     visit '/groups'
     click_link 'test group'
