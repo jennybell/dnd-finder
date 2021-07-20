@@ -13,13 +13,13 @@ feature 'Edit Groups' do
   scenario 'an regular group user cannot edit the group' do 
     sign_up
     create_group
-    log_out
+    sign_out
     sign_up_2nd_user
     send_group_request
-    log_out
+    sign_out
     sign_in
     accept_group_request
-    log_out
+    sign_out
     sign_in_second_user
     enter_group
     expect(page).not_to have_link 'Edit Group'
@@ -28,7 +28,7 @@ feature 'Edit Groups' do
   scenario 'a regular user who is not int he group cannot edit the group' do 
     sign_up
     create_group
-    log_out
+    sign_out
     sign_up_2nd_user
     enter_group
     expect(page).not_to have_link 'Edit Group'

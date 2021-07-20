@@ -41,12 +41,6 @@ def sign_up_2nd_user
   click_button "Sign up"
 end
 
-def log_in
-  fill_in 'Email', with: 'test@example.com'
-  fill_in 'Password', with: 'password123'
-  click_button 'Log in'
-end
-
 def create_group
   visit '/groups'
   click_link 'New Group'
@@ -85,7 +79,7 @@ def accept_group_request
   click_link 'Accept'
 end
 
-def log_out
+def sign_out
   visit '/'
   click_link 'Log Out'
 end
