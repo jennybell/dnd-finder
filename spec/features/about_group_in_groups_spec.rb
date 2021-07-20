@@ -32,6 +32,12 @@ feature 'About Me' do
     expect(page).to have_content 'Game Edition: 5e'
   end
 
+  scenario 'party level can be set in group creation' do 
+    sign_up
+    create_group
+    expect(page).to have_content 'Current Party Level: 4'
+  end
+
   scenario 'game edition can be updated in the edit page' do 
     sign_up
     create_group
@@ -55,4 +61,13 @@ feature 'About Me' do
     click_button 'Submit'
     expect(page).to have_content 'Campaign Type: Module'
   end  
+
+  scenario 'party level can be updated in the edit page' do 
+    sign_up
+    create_group
+    click_link 'Edit Game Information'
+    select "7", from: 'Party level'
+    click_button 'Submit'
+    expect(page).to have_content 'Current Party Level: 7'
+  end
 end

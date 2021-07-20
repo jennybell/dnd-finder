@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_150008) do
     t.text "information"
     t.text "game_edition"
     t.text "campaign_type"
+    t.integer "party_level"
   end
 
   create_table "invitations", force: :cascade do |t|
