@@ -23,7 +23,7 @@
   <br>
   <% check_user = game.game_responds.find { |player| player.user.id == current_user.id } %>
   <% if check_user %>
-    <strong><%= link_to 'Going', url: group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: 'delete' %></strong>
+    <strong><%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %></strong>
   <% else %>
     <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
   <% end %>
