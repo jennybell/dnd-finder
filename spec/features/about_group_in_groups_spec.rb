@@ -25,4 +25,10 @@ feature 'About Me' do
     click_button 'Submit'
     expect(page).to have_content 'blaaaaah'
   end
+
+  scenario 'game edition can be set in group creation' do 
+    sign_up
+    create_group
+    expect(page).to have_content 'Game Edition: 5e'
+  end
 end
