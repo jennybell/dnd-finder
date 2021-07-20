@@ -2,12 +2,10 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
-  # GET /groups or /groups.json
   def index
     @groups = Group.all
   end
 
-  # GET /groups/1 or /groups/1.json
   def show
     group_id = params[:id]
     @user = GroupUser.where(group_id: group_id, user_id: current_user.id).first
@@ -17,7 +15,6 @@ class GroupsController < ApplicationController
     @games = Game.where(group_id: group_id)
   end
 
-  # GET /groups/new
   def new
     @group = Group.new
   end
@@ -30,12 +27,10 @@ class GroupsController < ApplicationController
     redirect_to group_path(group)
   end
 
-  # GET /groups/1/edit
   def edit
     group = Group.where(id: @group.id)
   end
 
-  # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
 
@@ -51,7 +46,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /groups/1 or /groups/1.json
   def update
     respond_to do |format|
       if @group.update(group_params)
@@ -64,7 +58,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # DELETE /groups/1 or /groups/1.json
   def destroy
     @group.destroy
     respond_to do |format|
@@ -74,16 +67,13 @@ class GroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_group
       @group = Group.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    # @user_group = GroupUser.create(group_id: @group.id, user_id: current_user.id, admin: true)
-
     def group_params
-      params.require(:group).permit(:name, :party_size, :information, :game_edition, :image)
+      params.require(:group).permit(:name, :party_size, :information, :game_edition, :campaign_type, :image, :party_level)
     end
 
     def group_user_params

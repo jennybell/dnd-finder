@@ -2,13 +2,13 @@
   <%= form_with url: group_games_path(@group), method: 'post' do |f| %>
     <h3>Schedule a game</h3>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, required: true %>
     <br>
-    <%= f.label :date%><br>
-    <%= f.date_field :date%>
+    <%= f.label :date %><br>
+    <%= f.date_field :date, required: true %>
     <br>
-    <%= f.label :time%><br>
-    <%= f.time_field :time%><br><br>
+    <%= f.label :time %><br>
+    <%= f.time_field :time, required: true %><br><br>
     <%= f.submit "Schedule game" %>
   <% end %>
 <% end %>

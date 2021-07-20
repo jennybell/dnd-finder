@@ -32,7 +32,6 @@
         <button type="submit" name="commit">Create Comment</button>
       </div>
       <p>
-        
       </p>
 
     <% end %>
@@ -49,7 +48,7 @@
   <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
     <p>
       Add message: <br>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, required: true %>
     </p>
     <p>
       <%= f.submit "Send" %>
