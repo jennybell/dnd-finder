@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_094545) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["message_id"], name: "index_comments_on_message_id"
+  end
+
   create_table "game_responds", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "game_id", null: false
