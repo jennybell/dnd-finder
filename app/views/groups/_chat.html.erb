@@ -10,12 +10,12 @@
     <%= form_for([message, message.comments.build]) do |f| %>
       <p>
         <%= f.label :name %>
-        <input type="text" name="message[name]" id="message_name" value="<%= current_user.username %>">
+        <input type="text" name="message[name]" id="message_name" value="<%= current_user.username %>" required>
       </p>
       <!-- <input type="hidden" name="message[id]" id="message_id" value="<%= message.id %>"> -->
       <p>
         <%= f.label :body %><br/>
-        <%= f.text_area :body %>
+        <%= f.text_area :body, required: true %>
       </p>
       <br>
       <p>
@@ -28,7 +28,7 @@
   <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
     <p>
       Add message: <br>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, required: true %>
     </p>
     <p>
       <%= f.submit "Send" %>

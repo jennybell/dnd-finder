@@ -4,18 +4,23 @@
 
   <div>
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
   </div>
 
   <div>
     <%= form.label :information %>
-    <%= form.text_field :information %>
+    <%= form.text_field :information, required: true %>
   </div>
 
   <div>
     <%= form.label :party_size %>
     <%= form.select :party_size, [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] %>
   </div>
+
+  <div>
+    <%= form.label :game_edition %>
+    <%= form.select :game_edition, ['D&D', 'AD&D', '2e', '3e', '3.5', '4e', '5e'] %>
+  </div>  
 
   <br>
 
