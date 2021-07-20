@@ -65,6 +65,7 @@ def create_group
   visit '/groups'
   click_link 'New Group'
   fill_in 'Name', with: 'test group'
+  fill_in 'Information', with: 'Hello noobs!'
   select "2", from: 'Party size'
   fill_in 'Character name', with: 'Charlie'
   fill_in 'Character race', with: 'Human'

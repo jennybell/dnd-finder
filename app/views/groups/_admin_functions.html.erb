@@ -4,7 +4,6 @@
       <%= link_to 'Accept', group_invitations_path(user_id: request.sender.id, group_id: @group.id), method: 'patch' %> </p>
   <% end %>
 
-  <%= link_to 'Edit Group', edit_group_path(@group) %>
   <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <% end %>

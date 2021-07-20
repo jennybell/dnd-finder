@@ -32,6 +32,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
+    group = Group.where(id: @group.id)
   end
 
   # POST /groups or /groups.json
@@ -82,7 +83,7 @@ class GroupsController < ApplicationController
     # @user_group = GroupUser.create(group_id: @group.id, user_id: current_user.id, admin: true)
 
     def group_params
-      params.require(:group).permit(:name, :party_size)
+      params.require(:group).permit(:name, :party_size, :information)
     end
 
     def group_user_params
