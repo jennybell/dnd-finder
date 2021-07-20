@@ -31,4 +31,13 @@ feature 'About Me' do
     create_group
     expect(page).to have_content 'Game Edition: 5e'
   end
+
+  scenario 'game edition can be updated in the edit page' do 
+    sign_up
+    create_group
+    click_link 'Edit Game Information'
+    select "3e", from: 'Game edition'
+    click_button 'Submit'
+    expect(page).to have_content 'Game Edition: 3e'
+  end
 end
