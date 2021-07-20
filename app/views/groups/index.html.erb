@@ -1,24 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="taverns-land-page">
+  <div class="page-banner">
+    <h1 class="banner-heading">Tavern Keepers</h1>
+  </div>
+  <div class="taverns-center-container">
+    <div class="taverns-title">
+      <h1>Taverns</h1>
+    </div>
 
-<h1>Groups</h1>
+    <div class="taverns">
+      <% @groups.each do |group| %>
+        <div class="tavern">
+          <div class="tavern-image">
+            <% if !group.image.attached? %>
+              <p>No Image</p>
+            <% else %>
+              <%= image_tag group.image %>
+            <% end %>
+          </div>
+          <div class="tavern-details">
+            <h1><%= link_to group.name, group %></h1>
+            <p><%= group.information %></p>
+            <p>Battling since <%= time_ago_in_words(group.created_at) %> ago</p>
+            <p><%= group.group_users.length %> Ally of <%= group.party_size %>.</p>
+              <p><%= group.party_size - group.group_users.length %> Seats available, if you are worthy.</p>
+          </div>
+          
+        </div>
+      <% end %>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
-      <tr>
-        <td><%= link_to group.name, group %> - <%= group.group_users.length %>/<%= group.party_size %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Group', new_group_path %>
+    <div class="new-group-btn">
+      <!-- <%= link_to 'New Group', new_group_path %> -->
+      <a class="link_btn" href="/groups/new"><i class="fas fa-users"></i></a>
+    </div>
+    
+  </div>
+  
+</div>
