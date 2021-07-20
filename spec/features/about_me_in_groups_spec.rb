@@ -10,14 +10,14 @@ feature 'About Me' do
   scenario 'a DM can update game information' do 
     sign_up
     create_group
-    log_out 
+    sign_out 
     sign_up_2nd_user
     send_group_request
-    log_out
-    log_in
+    sign_out
+    sign_in
     accept_group_request
     click_link 'Assign DM'
-    log_out
+    sign_out
     sign_in_second_user
     enter_group
     first.click_link 'Edit Game Information'

@@ -1,6 +1,9 @@
 <% if !@user.nil? && @user.admin? %>
-  <%= form_with url: group_games_path(@group) do |f| %>
+  <%= form_with url: group_games_path(@group), method: 'post' do |f| %>
     <h3>Schedule a game</h3>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <br>
     <%= f.label :date%><br>
     <%= f.date_field :date%>
     <br>
@@ -12,7 +15,15 @@
 
 <% @games.each do |game| %>
   <br>
+  <%= game.name %>
+  <br>
   <%= game.date %>
   <br>
   <%= game.time.strftime("%k:%M") %>
+  <br>
+  <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
+  <%= game.game_responds.count %> Going <br>
+  <% game.game_responds.each do |response| %>
+    <%= response.user.username %><br>
+  <% end %>
 <% end %>

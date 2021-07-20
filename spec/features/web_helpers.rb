@@ -55,12 +55,6 @@ def sign_up_3rd_user
   click_button "Sign up"
 end
 
-def log_in
-  fill_in 'Email', with: 'test@example.com'
-  fill_in 'Password', with: 'password123'
-  click_button 'Log in'
-end
-
 def create_group
   visit '/groups'
   find('a', class: 'link_btn').click
@@ -108,7 +102,14 @@ def accept_group_request
   click_link 'Accept'
 end
 
-def log_out
+def sign_out
   visit '/'
   click_link 'Log Out'
+end
+
+def schedule_game
+  fill_in 'Name', with: 'Battle'
+  fill_in 'Date', with: '24/07/2021'
+  fill_in 'Time', with: '18:00'
+  click_button 'Schedule game'
 end

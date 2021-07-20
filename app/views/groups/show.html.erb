@@ -1,34 +1,9 @@
 
-
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
-
-<p>
-  <% if @group.image.attached? %>
-  <%= image_tag @group.image %>
-  <% else %>
-  <p>No Image</p>
-    
-  <% end %>
-</p>
-
-<p>Party Size: <%= @users.length %>/<%= @group.party_size %></p>
-
-<div>
-  <strong>Game Information:</strong><br>
-  <%= @group.information %>
-  <% if !@user.nil? && (@user.admin? || @user.dm?) %>
-    <%= link_to 'Edit Game Information', edit_group_path(@group), method: 'get' %>
-  <% end %>
-</div>
+<%= render 'group_info' %>
 
 <br>
 
 <p><%= render 'user_list' %></p>
-
-</p>
 
 <br>
 

@@ -12,7 +12,7 @@ describe 'Group Chat' do
   scenario 'a user cannot see chat if they are not a group member' do 
     sign_up
     create_group
-    log_out
+    sign_out
     sign_up_2nd_user
     enter_group
     expect(page).to_not have_content 'Add message:'
