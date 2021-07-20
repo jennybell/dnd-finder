@@ -40,4 +40,19 @@ feature 'About Me' do
     click_button 'Submit'
     expect(page).to have_content 'Game Edition: 3e'
   end
+
+  scenario 'campaign type can be set in group creation' do 
+    sign_up
+    create_group
+    expect(page).to have_content 'Campaign Type: Homebrew'
+  end
+
+  scenario 'campaign type can be updated in the edit page' do 
+    sign_up
+    create_group
+    click_link 'Edit Game Information'
+    select "Module", from: 'Campaign type'
+    click_button 'Submit'
+    expect(page).to have_content 'Campaign Type: Module'
+  end  
 end

@@ -62,6 +62,7 @@ def create_group
   fill_in 'Information', with: 'Hello noobs!'
   select "2", from: 'Party size'
   select "5e", from: 'Game edition'
+  select "Homebrew", from: 'Campaign type'
   fill_in 'Character name', with: 'Charlie'
   fill_in 'Character race', with: 'Human'
   select "Barbarian", from: 'Character class'
