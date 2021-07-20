@@ -5,6 +5,12 @@
   <%= @group.name %>
 </p>
 
+<p>
+  <% if @group.image %>
+  <%= image_tag @group.image %>
+  <% end %>
+</p>
+
 <p>Party Size: <%= @users.length %>/<%= @group.party_size %></p>
 
 <div>

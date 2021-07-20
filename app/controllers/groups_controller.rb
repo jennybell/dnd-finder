@@ -83,7 +83,7 @@ class GroupsController < ApplicationController
     # @user_group = GroupUser.create(group_id: @group.id, user_id: current_user.id, admin: true)
 
     def group_params
-      params.require(:group).permit(:name, :party_size, :information)
+      params.require(:group).permit(:name, :party_size, :information, :image)
     end
 
     def group_user_params
