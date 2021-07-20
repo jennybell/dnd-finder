@@ -73,7 +73,7 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-      params.require(:group).permit(:name, :party_size, :information, :game_edition, :campaign_type)
+      params.require(:group).permit(:name, :party_size, :information, :game_edition, :campaign_type, :image)
     end
 
     def group_user_params
