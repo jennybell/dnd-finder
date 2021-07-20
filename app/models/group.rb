@@ -4,4 +4,5 @@ class Group < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :invitations, dependent: :destroy
   has_many :games, dependent: :destroy
+  has_one_attached :image
 end

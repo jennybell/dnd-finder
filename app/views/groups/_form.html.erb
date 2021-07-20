@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.label "Image" %>
+    <%= form.file_field :image %><br>
+  </div>
+
+  <div>
     <%= form.label :party_size %>
     <%= form.select :party_size, [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] %>
   </div>
