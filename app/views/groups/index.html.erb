@@ -21,8 +21,20 @@
             <h1><%= link_to group.name, group %></h1>
             <p><%= group.information %></p>
             <p>Battling since <%= time_ago_in_words(group.created_at) %> ago</p>
-            <p><%= group.group_users.length %> Ally of <%= group.party_size %>.</p>
-              <p><%= group.party_size - group.group_users.length %> Seats available, if you are worthy.</p>
+            <p>
+              <% if group.group_users.length == 1 %>
+              <%= group.group_users.length %> Ally of <%= group.party_size %>
+              <% else %>
+              <%= group.group_users.length %> Allies of <%= group.party_size %>
+              <% end %>
+            </p>
+              <p>
+                <% if (group.party_size - group.group_users.length) == 1 %>
+                <%= group.party_size - group.group_users.length %> Seat available, if you are worthy.
+                <% else %>
+                <%= group.party_size - group.group_users.length %> Seats available, if you are worthy.
+                <% end %>
+              </p>
           </div>
           
         </div>

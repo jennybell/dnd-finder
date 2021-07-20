@@ -1,31 +1,51 @@
-<% if GroupUser.where(group_id: @group.id, admin: true).exists? %>
-  <strong>Admin:</strong> <br>
-<% end %>
-<% @users.each do |group_user| %>
-  <% if group_user.admin? %>
-    <%= group_user.user.username %> - <%= group_user.character_name %>, <%= group_user.character_race %> <%= group_user.character_class %>
-  <% end %>
-<% end %>
-<br>
+<div class="admin-function">
+  <% if GroupUser.where(group_id: @group.id, admin: true).exists? %>
 
-<% if GroupUser.where(group_id: @group.id, admin: false, dm: true).exists? %>
-  <strong>DM:</strong>
-<% end %>
-<% @users.each do |group_user| %>
-  <% if !group_user.admin? && group_user.dm? %>
-    <%= group_user.user.username %> - <%= group_user.character_name %>, <%= group_user.character_race %> <%= group_user.character_class %>
   <% end %>
-<% end %>
-<br>
-
-<% if GroupUser.where(group_id: @group.id, admin: false, dm: false).exists? %>
-  <strong>Players:</strong>
-<% end %>
-<% @users.each do |group_user| %>
-  <% if !group_user.admin? && !group_user.dm? %>
-    <%= group_user.user.username %> - <%= group_user.character_name %>, <%= group_user.character_race %> <%= group_user.character_class %>
-  <% if !@user.nil? && @user.admin? %> 
-      - <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: group_user.user.id), method: 'patch' %>
+  <div class="user-request">
+    <h1>Admin:</h1>
+    <div class="player-details">
+      <% @users.each do |group_user| %>
+      <% if group_user.admin? %>
+      <%= group_user.user.username %> - <%= group_user.character_name %>, <%= group_user.character_race %>
+      <%= group_user.character_class %>
+      <% end %>
+      <% end %>
+    </div>
+    <% if GroupUser.where(group_id: @group.id, admin: false, dm: true).exists? %>
+      <h1>DM:</h1>
+      <% end %>
+    <div class="player-details">
+      <% @users.each do |group_user| %>
+      <% if !group_user.admin? && group_user.dm? %>
+      <p>
+        <%= group_user.user.username %> - <%= group_user.character_name %>, <%= group_user.character_race %>
+      <%= group_user.character_class %>
+      </p>
+      <% end %>
+      <% end %>
+    </div>
+    <% if GroupUser.where(group_id: @group.id, admin: false, dm: false).exists? %>
+      <h1>Players:</h1>
     <% end %>
-  <% end %>
-<% end %>
+    <% @users.each do |group_user| %>
+    <div class="player-details">
+      <p>
+      
+        <% if !group_user.admin? && !group_user.dm? %>
+          <%= group_user.user.username %> - <%= group_user.character_name %>, <%= group_user.character_race %>
+          <%= group_user.character_class %>
+      </p>
+          <% if !@user.nil? && @user.admin? %>
+          <%= link_to 'Assign DM', group_dm_path(group_id: @group, user_id: group_user.user.id), method: 'patch', class: 'accept' %>
+          <% end %>
+      <% end %>
+      
+    </div>
+    <% end %>
+
+
+    
+  </div>
+
+</div>

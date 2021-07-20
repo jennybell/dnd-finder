@@ -1,18 +1,36 @@
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
-
-<p>Party Size: <%= @users.length %>/<%= @group.party_size %></p>
-<p>Current Party Level: <%= @group.party_level %></p>
-<p>Game Edition: <%= @group.game_edition %></p>
-<p>Campaign Type: <%= @group.campaign_type %></p>
-
-
-<div>
-  <strong>Game Information:</strong><br>
-  <%= @group.information %>
-  <% if !@user.nil? && (@user.admin? || @user.dm?) %>
-    <%= link_to 'Edit Game Information', edit_group_path(@group), method: 'get' %>
-  <% end %>
+<div class="group-info">
+  <div class="group-title">
+    <% if @group.image.attached? %>
+    <%= image_tag @group.image %>
+    <% else %>
+    <p>No image</p>
+    <% end %>
+    <h1><%= @group.name %></h1>
+  </div>
+  <div class="group-details">
+    <p>
+      <%= @group.information %>
+    </p>
+    <p>Battling since <%= time_ago_in_words(@group.created_at) %> ago</p>
+    <p>
+      <% if @group.group_users.length == 1 %>
+      <%= @group.group_users.length %> Ally of <%= @group.party_size %>
+      <% else %>
+      <%= @group.group_users.length %> Allies of <%= @group.party_size %>
+      <% end %>
+    </p>
+    <p>
+      <% if (@group.party_size - @group.group_users.length) == 1 %>
+      <%= @group.party_size - @group.group_users.length %> Seat available, if you are worthy.
+      <% else %>
+      <%= @group.party_size - @group.group_users.length %> Seats available, if you are worthy.
+      <% end %>
+    </p>
+    <p>Game Edition: <%= @group.game_edition %></p>
+  </div>
+  <div class="new-group-btn">
+    <% if !@user.nil? && (@user.admin? || @user.dm?) %>
+      <a class="edit-btn" data-method="get" href="/groups/<%= @group.id %>/edit"><i class="fas fa-edit"></i></a>
+      <% end %>
+  </div>
 </div>
