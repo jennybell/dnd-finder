@@ -15,6 +15,6 @@ feature 'Session Complete' do
     schedule_game
     click_link 'Going'
     click_link 'End Session'
-    expect(User.first.rating).to eq 1
+    expect(User.first.rating).to eq 13
   end
 end

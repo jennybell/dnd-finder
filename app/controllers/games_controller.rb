@@ -9,7 +9,10 @@ class GamesController < ApplicationController
     game = Game.find(params[:id])
     game.update_column(:complete, true)
     players = GameRespond.where(game_id: game.id)
-    players.each { |player| User.increment_counter(:rating, player.user.id) }
+    players.each do |player| 
+      player.user.rating += 13
+      player.user.save!
+    end
     redirect_to group_path(params[:group_id])
   end
 end
