@@ -10,8 +10,8 @@ feature 'Group Roles' do
     sign_out
     sign_in
     accept_group_request
-    expect(page).to have_content "Admin: testuser"
-    expect(page).to have_content "Players: testuser2"
+    expect(page).to have_content "Admin:"
+    expect(page).to have_content "Players:"
   end
 
   scenario 'admin can assign DM role' do 
@@ -24,6 +24,6 @@ feature 'Group Roles' do
     sign_in
     accept_group_request
     click_link 'Assign DM'
-    expect(page).to have_content "DM: testuser2"
+    expect(page).to have_content "DM:"
   end
 end

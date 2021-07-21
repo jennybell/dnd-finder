@@ -1,9 +1,19 @@
-<% if !@user.nil? && @user.admin? %>
+<div class="admin-function">
+  <% if !@user.nil? && @user.admin? %>
   <% @requests.each do |request| %>
-    <p> <%= request.sender.username %> - <%= request.character_name %>, <%= request.character_race %> <%= request.character_class %> requests to join your party -  
-      <%= link_to 'Accept', group_invitations_path(user_id: request.sender.id, group_id: @group.id), method: 'patch' %> </p>
+  <div class="user-request">
+    <h1><%= request.sender.username %></h1>
+    <div class="request-details">
+      <p>Character Name: <%= request.character_name %>, Race: <%= request.character_race %>, Class: <%= request.character_class %> requests to join your party</p>
+      <%= link_to 'Accept', group_invitations_path(user_id: request.sender.id, group_id: @group.id), method: 'patch', class: 'accept' %>
+    </div>
+    
+    </div>
   <% end %>
 
-  <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-group' %>
+  
+    
 
 <% end %>
+</div>
