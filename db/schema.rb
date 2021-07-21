@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_133108) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "name"
     t.text "location"
+    t.boolean "complete"
     t.index ["group_id"], name: "index_games_on_group_id"
   end
 
@@ -93,8 +94,8 @@ ActiveRecord::Schema.define(version: 2021_07_21_133108) do
     t.integer "party_size"
     t.text "information"
     t.text "game_edition"
-    t.integer "party_level"
     t.text "campaign_type"
+    t.integer "party_level"
   end
 
   create_table "invitations", force: :cascade do |t|

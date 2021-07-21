@@ -34,5 +34,7 @@
     <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
   <% end %>
   <%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> <br>
-
+  <% if !game.complete? && @user.admin? %>
+    <%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %>
+  <% end %>
 <% end %>

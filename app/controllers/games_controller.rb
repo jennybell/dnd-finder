@@ -5,7 +5,11 @@ class GamesController < ApplicationController
     redirect_to group_path(@group)
   end
 
-  # def show
-  #   @game_responds = GameRespond.where(game_id: game_id)
-  # end
+  def update
+    game = Game.find(params[:id])
+    game.update_column(:complete, true)
+    players = GameRespond.where(game_id: game.id)
+    players.each { |player| User.increment_counter(:rating, player.user.id) }
+    redirect_to group_path(params[:group_id])
+  end
 end
