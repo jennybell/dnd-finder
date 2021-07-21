@@ -1,0 +1,4 @@
+<h2>Current Players</h2>
+<% @game.game_responds.each do |response| %>
+  <%= response.user.username %><br>
+<% end %>
