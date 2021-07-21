@@ -7,9 +7,9 @@
     <%= f.text_field :name, required: true %>
     <div class="date-time">
       <!-- <%= f.label :date %> -->
-      <%= f.date_field :date, required: true %>
+      <%= f.date_field :date, required: true, id: 'date' %>
       <!-- <%= f.label :time %> -->
-      <%= f.time_field :time, required: true %>
+      <%= f.time_field :time, required: true, id: 'time' %>
     </div>
 
     <%= f.submit "Schedule game" %>
