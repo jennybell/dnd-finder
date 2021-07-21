@@ -24,16 +24,24 @@
       <p><%= game.name %></p>
       <p>Date: <%= game.date %></p>
       <p>Time: <%= game.time.strftime("%k:%M") %></p>
+      <% check_user = game.game_responds.find { |player| player.user.id == current_user.id } %>
+      <% if check_user %>
+      <strong><%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %></strong>
+      <% else %>
       <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
-      <p><%= game.game_responds.count %> Going</p>
+      <% end %>
+      <%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> <br>
+      <% if !game.complete? && @user.admin? %>
+      <%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %>
+      <% end %>
       <h3>Attending</h3>
       <div class="attending">
-        
+
         <% game.game_responds.each do |response| %>
-          <p>&nbsp;<%= response.user.username %> <span>-</span></p>
-        
-      <% end %>
-    </div>
+        <p>&nbsp;<%= response.user.username %> <span>-</span></p>
+
+        <% end %>
+      </div>
     </div>
     <% end %>
   </div>
