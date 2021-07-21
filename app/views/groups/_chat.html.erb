@@ -1,8 +1,10 @@
 <div class="chat-box">
   <div class="new-message">
+    <% if !@user.nil? %>
     <%= form_with url: group_message_path(@group), method: 'post' do |f| %>
       <%= f.text_area :content, required: true %>
       <button class="message_btn" type="submit" name="commit" data-disable-with="Send"><i class="far fa-comment-dots"></i></button>
+    <% end %>
     <% end %>
   </div>
 
