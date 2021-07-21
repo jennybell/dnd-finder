@@ -3,7 +3,8 @@
   <div class="chat-window">
   <% @messages.each do |message| %>
     <% if !message.games_id.nil? %>
-      <%= message.games_id.name %>
+      <% game = Game.find(message.games_id) %>
+      Game scheduled: <%= game.name %> at <%= game.location %> for <%= game.date.strftime("%d/%m/%Y") %> at <%= game.time.strftime("%k:%M") %>
     <% else %>
     <div class="message">
       <div class="message-title">
