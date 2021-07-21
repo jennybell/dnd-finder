@@ -19,6 +19,6 @@ class GamesController < ApplicationController
   private 
 
   def game_params
-    params.permit(:date, :time, :name).merge(group_id: @group.id)
+    params.permit(:date, :time, :name, :location).merge(group_id: @group.id)
   end
 end

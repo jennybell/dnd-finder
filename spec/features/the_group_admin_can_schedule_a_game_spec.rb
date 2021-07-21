@@ -6,6 +6,7 @@ feature "schedule games" do
     expect(page).to have_content('2021-07-24')
     expect(page).to have_content('18:00')
     expect(page).to have_content('Battle')
+    expect(page).to have_content('Makers Academy')
   end
 
   scenario "users who aren't group admin cannot schedule a game" do
