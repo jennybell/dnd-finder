@@ -21,9 +21,12 @@
   <br>
   <%= game.time.strftime("%k:%M") %>
   <br>
-  <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
-  <%= game.game_responds.count %> Going <br>
-  <% game.game_responds.each do |response| %>
-    <%= response.user.username %><br>
+  <% check_user = game.game_responds.find { |player| player.user.id == current_user.id } %>
+  <% if check_user %>
+    <strong><%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %></strong>
+  <% else %>
+    <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
   <% end %>
+  <%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> <br>
+
 <% end %>
