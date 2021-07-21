@@ -1,29 +1,49 @@
-<% if !@user.nil? %>
+<div class="chat-box">
+  <% if !@user.nil? %>
+  <div class="chat-window">
   <% @messages.each do |message| %>
-    <br><strong><%= message.user.username %></strong>
-    <%= message.content %> <br>
-    <%= message.comments.count %>
-    <% message.comments.each do |comment| %>
-      <%= comment.name %>
-      <%= comment.body %><br>
-    <% end %>
-    <%= form_for([message, message.comments.build]) do |f| %>
+    <div class="message">
+      <div class="message-title">
+        <h3><%= message.user.username %> Posted</h3>
+      </div>
+      <div class="message-content">
+        <%= message.content %>
+        <div class="comments">
+          <% message.comments.each do |comment| %>
+            <div class="comment-title">
+              <p><%= comment.name %></p>
+            </div>
+            <div class="comment-content">
+              <p><%= comment.body %></p>
+            </div>
+          <% end %>
+        </div>
+        
+        <%= form_for([message, message.comments.build]) do |f| %>
       <p>
-        <%= f.label :name %>
-        <input type="text" name="message[name]" id="message_name" value="<%= current_user.username %>" required>
+        <input type="hidden" name="comment[name]" id="comment_name" value="<%= current_user.username %>">
       </p>
       <!-- <input type="hidden" name="message[id]" id="message_id" value="<%= message.id %>"> -->
+      <div class="comment-textarea">
+        <!-- <%= f.text_area :body %> -->
+        <textarea name="comment[body]" id="comment_body" placeholder="Comment here..." required></textarea>
+        <!-- <%= f.submit %> -->
+        <!-- <input type="submit" name="commit" value="Create Comment" data-disabled-with="Create Comment"> -->
+        <button type="submit" name="commit">Create Comment</button>
+      </div>
       <p>
-        <%= f.label :body %><br/>
-        <%= f.text_area :body, required: true %>
-      </p>
-      <br>
-      <p>
-        <%= f.submit %>
       </p>
 
     <% end %>
-  <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+     <br>
+    
+    
+    
+  
 
   <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
     <p>
@@ -35,3 +55,4 @@
     </p>
   <% end %>
 <% end %>
+</div>

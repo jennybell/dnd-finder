@@ -4,7 +4,7 @@ feature 'Edit Groups' do
   scenario 'admin can edit a group' do 
     sign_up
     create_group
-    click_link 'Edit Game Information'
+    find('a', class: 'edit-btn').click
     fill_in('Name', with: 'edited test group')
     click_button 'Submit'
     expect(page).to have_content 'edited test group'
@@ -22,7 +22,7 @@ feature 'Edit Groups' do
     sign_out
     sign_in_second_user
     enter_group
-    expect(page).not_to have_link 'Edit Game Information'
+    expect(page).not_to have_link(class: 'edit-btn')
   end
 
   scenario 'a regular user who is not int he group cannot edit the group' do 
