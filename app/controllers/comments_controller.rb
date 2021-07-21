@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     @message = Message.find(params[:message_id])
-    @comment = @message.comments.create(params[:comment].permit(:name, :body))
+    @comment = @message.comments.create(comment_params)
     redirect_to groups_path
   end
 
@@ -13,4 +13,9 @@ class CommentsController < ApplicationController
     redirect_to groups_path
   end 
 
+  private 
+
+  def comment_params
+    params.require(:comment).permit(:name, :body)
+  end
 end
