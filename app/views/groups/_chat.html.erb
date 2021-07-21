@@ -2,7 +2,8 @@
   <% if !@user.nil? %>
   <div class="chat-window">
   <% @messages.each do |message| %>
-    <% if !message.game_id.nil? %>
+    <% if !message.games_id.nil? %>
+      <%= message.games_id.name %>
     <% else %>
     <div class="message">
       <div class="message-title">
@@ -36,10 +37,11 @@
       <p>
       </p>
 
-    <% end %>
+      <% end %>
       </div>
     </div>
-    <% end %>
+  <% end %>
+  <% end %>
   </div>
      <br>
     
