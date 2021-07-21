@@ -32,9 +32,10 @@
     </div>
   </div>
   
-  <div class="new-group-btn">
+  
     <% if !@user.nil? && (@user.admin? || @user.dm?) %>
+    <div class="new-group-btn">
       <a class="edit-btn" data-method="get" href="/groups/<%= @group.id %>/edit"><i class="fas fa-edit"></i></a>
-      <% end %>
-  </div>
+    </div>
+    <% end %>
 </div>

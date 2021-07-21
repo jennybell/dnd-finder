@@ -66,6 +66,10 @@ a:hover {
   transform: scale(1.3);
 }
 
+a:visited {
+  color: inherit;
+}
+
 p {
   font-family: 'MedievalSharp', cursive;
 }
@@ -691,12 +695,28 @@ nav ul li+li+li {
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 98%;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   height: 100%;
+  overflow-y: scroll;
+}
+
+.user-group::-webkit-scrollbar {
+  width: 8px;
+}
+
+.user-group::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.user-group::-webkit-scrollbar-thumb {
+  background-color: #e6c407;
+  border: 3px solid #A42121;
 }
 
 .group-details h2 {
-  margin: 10px 30px 5px 0;
+  margin: 10px 0;
 }
 
 .not-users-groups {
@@ -780,7 +800,7 @@ nav ul li+li+li {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   min-height: 100vh;
   padding: 60px;
   background-image: url('https://i.pinimg.com/originals/7f/66/78/7f66782d3be428660cae59d52628427e.jpg');
@@ -796,7 +816,7 @@ nav ul li+li+li {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 80%;
+  width: 90%;
   min-height: 100%;
 }
 
@@ -899,6 +919,18 @@ nav ul li+li+li {
   width: 100%;
   height: 50%;
   padding: 15px;
+  border: 12px outset #e6c407;
+}
+
+.not-user-group-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 98%;
+  height: 50px;
+  padding: 0;
+  margin: 0;
 }
 
 .group-details {
@@ -906,9 +938,9 @@ nav ul li+li+li {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 50%;
-  height: 100%;
-  padding: 15px;
+  width: 49%;
+  padding: 0;
+  margin: 0;
 }
 
 .group-details h1 {
@@ -948,16 +980,16 @@ nav ul li+li+li {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  width: 40%;
+  width: 35%;
 }
 
 .game-schedule {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   margin: 0 auto;
-  width: 60%;
+  width: 65%;
 }
 
 .schedular {
@@ -973,13 +1005,10 @@ nav ul li+li+li {
   width: 80%;
 }
 
-.game-schedule label {
-  margin: 5px 20px;
-}
-
 .game-schedule input {
   width: 100%;
   height: 25px;
+  margin: 5px 0;
   border: none;
   outline: none;
 }
@@ -1000,6 +1029,7 @@ nav ul li+li+li {
 .game-schedule input[type=submit] {
   width: 100%;
   background-color: #e6c407;
+  margin-top: 10px;
 }
 
 .games {
@@ -1007,7 +1037,6 @@ nav ul li+li+li {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin: 0 auto;
   width: 30%;
   height: 100%;
 }
@@ -1017,9 +1046,8 @@ nav ul li+li+li {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  width: 100%;
+  width: 84%;
   padding: 5px;
-  margin-top: 5px;
   border: 12px outset #e6c407;
 }
 
@@ -1041,7 +1069,7 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  width: 80%;
+  width: 100%;
 }
 
 .user-request h1 {

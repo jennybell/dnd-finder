@@ -3,8 +3,8 @@
     <% if !@user.nil? && @user.admin? %>
     <%= form_with url: group_games_path(@group), method: 'post' do |f| %>
     <h3>Schedule a Battle</h3>
-    <%= f.label :name %>
-    <%= f.text_field :name, required: true %>
+    <!-- <%= f.label :name %> -->
+    <%= f.text_field :name, required: true, placeholder: 'Battle Name', id: 'name' %>
 
     <div class="date-time">
       <!-- <%= f.label :date %> -->
@@ -13,7 +13,7 @@
       <%= f.time_field :time, required: true, id: 'time' %>
     </div>
     <!-- <%= f.label :location %><br> -->
-    <%= f.text_field :location, required: true %>
+    <%= f.text_field :location, required: true, placeholder: 'Location' %>
 
     <%= f.submit "Schedule game" %>
     <% end %>
@@ -26,22 +26,22 @@
       <p><%= game.name %></p>
       <p>Date: <%= game.date %></p>
       <p>Time: <%= game.time.strftime("%k:%M") %></p>
+      <p>Location: <%= game.location %></p>
       <% check_user = game.game_responds.find { |player| player.user.id == current_user.id } %>
       <% if check_user %>
-      <strong><%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %></strong>
+      <p><%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %>
+      </p>
       <% else %>
-      <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
+      <p><%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %></p>
       <% end %>
-      <%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> <br>
+      <p><%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %></p>
       <% if !game.complete? && @user.admin? %>
-      <%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %>
+      <p><%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %></p>
       <% end %>
       <h3>Attending</h3>
       <div class="attending">
-
-
         <% game.game_responds.each do |response| %>
-        <p>&nbsp;<%= response.user.username %> <span>-</span></p>
+        <p>&nbsp;<a href="/users/<%= response.user_id %>"><%= response.user.username %> </a><span>-</span></p>
 
         <% end %>
       </div>
