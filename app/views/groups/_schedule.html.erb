@@ -27,8 +27,6 @@
   <% else %>
     <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
   <% end %>
-  <%= game.game_responds.count %> Going <br>
-  <% game.game_responds.each do |response| %>
-    <%= response.user.username %><br>
-  <% end %>
+  <%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> <br>
+
 <% end %>
