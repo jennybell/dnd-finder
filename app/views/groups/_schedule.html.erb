@@ -11,7 +11,8 @@
       <!-- <%= f.label :time %> -->
       <%= f.time_field :time, required: true, id: 'time' %>
     </div>
-
+    <!-- <%= f.label :location %><br> -->
+    <%= f.text_field :location, required: true %>
     <%= f.submit "Schedule game" %>
     <% end %>
     <% end %>
