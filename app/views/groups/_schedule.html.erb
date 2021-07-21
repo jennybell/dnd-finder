@@ -9,6 +9,9 @@
     <br>
     <%= f.label :time %><br>
     <%= f.time_field :time, required: true %><br><br>
+    <%= f.label :location %>
+    <%= f.text_field :location, required: true %>
+    <br>
     <%= f.submit "Schedule game" %>
   <% end %>
 <% end %>
@@ -21,6 +24,8 @@
   <br>
   <%= game.time.strftime("%k:%M") %>
   <br>
+  <%= game.location %>
+   <br>
   <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
   <%= game.game_responds.count %> Going <br>
   <% game.game_responds.each do |response| %>
