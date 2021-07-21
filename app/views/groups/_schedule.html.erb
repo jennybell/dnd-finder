@@ -1,29 +1,39 @@
-<% if !@user.nil? && @user.admin? %>
-  <%= form_with url: group_games_path(@group), method: 'post' do |f| %>
-    <h3>Schedule a game</h3>
+<div class="game-schedule">
+  <div class="schedular">
+    <% if !@user.nil? && @user.admin? %>
+    <%= form_with url: group_games_path(@group), method: 'post' do |f| %>
+    <h3>Schedule a Battle</h3>
     <%= f.label :name %>
     <%= f.text_field :name, required: true %>
-    <br>
-    <%= f.label :date %><br>
-    <%= f.date_field :date, required: true %>
-    <br>
-    <%= f.label :time %><br>
-    <%= f.time_field :time, required: true %><br><br>
-    <%= f.submit "Schedule game" %>
-  <% end %>
-<% end %>
+    <div class="date-time">
+      <!-- <%= f.label :date %> -->
+      <%= f.date_field :date, required: true %>
+      <!-- <%= f.label :time %> -->
+      <%= f.time_field :time, required: true %>
+    </div>
 
-<% @games.each do |game| %>
-  <br>
-  <%= game.name %>
-  <br>
-  <%= game.date %>
-  <br>
-  <%= game.time.strftime("%k:%M") %>
-  <br>
-  <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
-  <%= game.game_responds.count %> Going <br>
-  <% game.game_responds.each do |response| %>
-    <%= response.user.username %><br>
-  <% end %>
-<% end %>
+    <%= f.submit "Schedule game" %>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="games">
+    <h3>Scheduled Games</h3>
+    <% @games.each do |game| %>
+    <div class="game">
+      <p><%= game.name %></p>
+      <p>Date: <%= game.date %></p>
+      <p>Time: <%= game.time.strftime("%k:%M") %></p>
+      <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
+      <p><%= game.game_responds.count %> Going</p>
+      <h3>Attending</h3>
+      <div class="attending">
+        
+        <% game.game_responds.each do |response| %>
+          <p>&nbsp;<%= response.user.username %> <span>-</span></p>
+        
+      <% end %>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>
