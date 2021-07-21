@@ -1,3 +1,4 @@
+
 # feature "group members can rsvp to a game" do
 #   scenario "members can respond to a game to say they are going" do
 #     sign_up
@@ -22,3 +23,4 @@
 #     expect(page).to have_content "testuser"
 #   end
 # end
+

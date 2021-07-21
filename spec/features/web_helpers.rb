@@ -116,3 +116,4 @@ end
 #   fill_in 'time', with: '18:00'
 #   click_button 'Schedule game'
 # end
+

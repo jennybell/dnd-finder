@@ -5,6 +5,7 @@
     <h3>Schedule a Battle</h3>
     <%= f.label :name %>
     <%= f.text_field :name, required: true %>
+
     <div class="date-time">
       <!-- <%= f.label :date %> -->
       <%= f.date_field :date, required: true, id: 'date' %>
@@ -13,6 +14,7 @@
     </div>
     <!-- <%= f.label :location %><br> -->
     <%= f.text_field :location, required: true %>
+
     <%= f.submit "Schedule game" %>
     <% end %>
     <% end %>
@@ -36,6 +38,7 @@
       <% end %>
       <h3>Attending</h3>
       <div class="attending">
+
 
         <% game.game_responds.each do |response| %>
         <p>&nbsp;<%= response.user.username %> <span>-</span></p>

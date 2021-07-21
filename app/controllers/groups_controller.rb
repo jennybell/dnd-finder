@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
 
   def show
     group_id = params[:id]
-    @user = GroupUser.where(group_id: group_id, user_id: current_user.id).first
+    @user = GroupUser.find_by(group_id: group_id, user_id: current_user.id)
     @messages = Message.where(group_id: group_id)
     @requests = Invitation.where(group_id: group_id, confirmed: false)
     @users = GroupUser.where(group_id: group_id)
@@ -20,11 +20,9 @@ class GroupsController < ApplicationController
   end
 
   def assign_dm 
-    user = params[:user_id]
-    group = params[:group_id]
-    dm = GroupUser.where(group_id: group, user_id: user).first
+    dm = GroupUser.find_by(group_id: params[:group_id], user_id: params[:user_id])
     dm.update_column(:dm, true)
-    redirect_to group_path(group)
+    redirect_to group_path(params[:group_id])
   end
 
   def edit
