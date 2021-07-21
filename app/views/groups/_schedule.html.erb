@@ -26,4 +26,5 @@
   <% game.game_responds.each do |response| %>
     <%= response.user.username %><br>
   <% end %>
+  <%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %>
 <% end %>
