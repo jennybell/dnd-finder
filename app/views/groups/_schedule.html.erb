@@ -1,40 +1,51 @@
-<% if !@user.nil? && @user.admin? %>
-  <%= form_with url: group_games_path(@group), method: 'post' do |f| %>
-    <h3>Schedule a game</h3>
+<div class="game-schedule">
+  <div class="schedular">
+    <% if !@user.nil? && @user.admin? %>
+    <%= form_with url: group_games_path(@group), method: 'post' do |f| %>
+    <h3>Schedule a Battle</h3>
     <%= f.label :name %>
     <%= f.text_field :name, required: true %>
-    <br>
-    <%= f.label :date %><br>
-    <%= f.date_field :date, required: true %>
-    <br>
-    <%= f.label :time %><br>
-    <%= f.time_field :time, required: true %>
-    <br>
-     <%= f.label :location %><br>
-    <%= f.text_field :location, required: true %>
-    <br><br>
-    <%= f.submit "Schedule game" %>
-  <% end %>
-<% end %>
 
-<% @games.each do |game| %>
-  <br>
-  <%= game.name %>
-  <br>
-  <%= game.date %>
-  <br>
-  <%= game.time.strftime("%k:%M") %>
-  <br>
-  <%= game.location %>
-  <br>
-  <% check_user = game.game_responds.find { |player| player.user.id == current_user.id } %>
-  <% if check_user %>
-    <strong><%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %></strong>
-  <% else %>
-    <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
-  <% end %>
-  <%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> <br>
-  <% if !game.complete? && @user.admin? %>
-    <%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %>
-  <% end %>
-<% end %>
+    <div class="date-time">
+      <!-- <%= f.label :date %> -->
+      <%= f.date_field :date, required: true, id: 'date' %>
+      <!-- <%= f.label :time %> -->
+      <%= f.time_field :time, required: true, id: 'time' %>
+    </div>
+    <!-- <%= f.label :location %><br> -->
+    <%= f.text_field :location, required: true %>
+
+    <%= f.submit "Schedule game" %>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="games">
+    <h3>Scheduled Games</h3>
+    <% @games.each do |game| %>
+    <div class="game">
+      <p><%= game.name %></p>
+      <p>Date: <%= game.date %></p>
+      <p>Time: <%= game.time.strftime("%k:%M") %></p>
+      <% check_user = game.game_responds.find { |player| player.user.id == current_user.id } %>
+      <% if check_user %>
+      <strong><%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %></strong>
+      <% else %>
+      <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>
+      <% end %>
+      <%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> <br>
+      <% if !game.complete? && @user.admin? %>
+      <%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %>
+      <% end %>
+      <h3>Attending</h3>
+      <div class="attending">
+
+
+        <% game.game_responds.each do |response| %>
+        <p>&nbsp;<%= response.user.username %> <span>-</span></p>
+
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

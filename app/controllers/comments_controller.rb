@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
+    @group = Group.find(params[:group_id])
     @message = Message.find(params[:message_id])
     @comment = @message.comments.create(comment_params)
     redirect_to groups_path
