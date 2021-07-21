@@ -8,7 +8,11 @@
     <%= f.date_field :date, required: true %>
     <br>
     <%= f.label :time %><br>
-    <%= f.time_field :time, required: true %><br><br>
+    <%= f.time_field :time, required: true %>
+    <br>
+     <%= f.label :location %><br>
+    <%= f.text_field :location, required: true %>
+    <br><br>
     <%= f.submit "Schedule game" %>
   <% end %>
 <% end %>
@@ -20,6 +24,8 @@
   <%= game.date %>
   <br>
   <%= game.time.strftime("%k:%M") %>
+  <br>
+  <%= game.location %>
   <br>
   <% check_user = game.game_responds.find { |player| player.user.id == current_user.id } %>
   <% if check_user %>
