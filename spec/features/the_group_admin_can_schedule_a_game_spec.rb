@@ -24,4 +24,11 @@ feature "schedule games" do
     click_link 'test group'
     expect(page).not_to have_content("Schedule a game")
   end
+
+  scenario "scheduling a game creates a message in the chat" do
+    sign_up
+    create_group
+    schedule_game
+    expect(page).to have_content('testuser has scheduled a game for 24/07/2021 at 18:00')
+  end
 end
