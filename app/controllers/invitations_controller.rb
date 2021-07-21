@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
     sender = params[:user_id]
     group = params[:group_id] 
 
-    result = Invitation.where(sender_id: sender, group_id: group, confirmed: false).first
+    result = Invitation.find_by(sender_id: sender, group_id: group, confirmed: false)
     result.update_column(:confirmed, true)
 
     group_user = GroupUser.create(group_user_params)
