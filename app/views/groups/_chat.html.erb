@@ -2,6 +2,8 @@
   <% if !@user.nil? %>
   <div class="chat-window">
   <% @messages.each do |message| %>
+    <% if !message.game_id.nil? %>
+    <% else %>
     <div class="message">
       <div class="message-title">
         <h3><%= message.user.username %> Posted</h3>

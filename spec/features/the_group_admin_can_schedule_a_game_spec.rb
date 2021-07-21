@@ -29,6 +29,6 @@ feature "schedule games" do
     sign_up
     create_group
     schedule_game
-    expect(page).to have_content('testuser has scheduled a game for 24/07/2021 at 18:00')
+    expect(page).to have_content('testuser has scheduled the game Battle at Makers Academy for 24/07/2021 at 18:00')
   end
 end
