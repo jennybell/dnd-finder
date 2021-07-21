@@ -1,6 +1,5 @@
 class GamesController < ApplicationController
   def create
-    p params
     @group = Group.find(params[:group_id])
     @game = Game.create(group_id: @group.id, date: params[:date], time: params[:time], name: params[:name])
     redirect_to group_path(@group)
@@ -8,8 +7,9 @@ class GamesController < ApplicationController
 
   def update
     game = Game.find(params[:id])
+    game.update_column(:complete, true)
     players = GameRespond.where(game_id: game.id)
-    game.update_column(complete: true)
+    players.each { |player| User.increment_counter(:rating, player.user.id) }
     redirect_to group_path(params[:group_id])
   end
 end
