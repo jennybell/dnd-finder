@@ -22,7 +22,7 @@ feature 'About Me' do
     enter_group
     find('a', class: 'edit-btn').click
     fill_in 'Information', with: 'blaaaaah'
-    click_button 'Submit'
+    click_button 'Update Group'
     expect(page).to have_content 'blaaaaah'
   end
 

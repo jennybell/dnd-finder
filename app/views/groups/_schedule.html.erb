@@ -31,16 +31,18 @@
       <% if check_user %>
       <p>
         <!-- <%= link_to 'Going', group_game_game_respond_path(game_id: game.id, group_id: @group.id), method: :delete %>Going -->
-        <a href="/groups/<%= @group.id %>/games/<%= game.id %>/game_responds/<%= @user.id %>" rel="nofollow" data-method="delete"><i class="far fa-thumbs-down"></i> Not Attending</a>
+        <a class="not-att" href="/groups/<%= @group.id %>/games/<%= game.id %>/game_responds/<%= @user.id %>" rel="nofollow" data-method="delete"><i class="far fa-thumbs-down"></i> Not Attending</a>
       </p>
       <% else %>
       <p>
         <!-- <%= link_to 'Going', group_game_game_responds_path(@group.id, game.id), method: :post %>  -->
-        <a href="/groups/<%= @group.id %>/games/<%= game.id %>/game_responds" rel="nofollow" data-method="post"><i class="far fa-thumbs-up"></i> Attending</a>
+        <a class="att" href="/groups/<%= @group.id %>/games/<%= game.id %>/game_responds" rel="nofollow" data-method="post"><i class="far fa-thumbs-up"></i> Attending</a>
         
       </p>
       <% end %>
-      <p><%= link_to "#{game.game_responds.count} Going",  group_game_game_responds_path(@group.id, game.id) %> Not Going</p>
+      <p>
+        <%= game.game_responds.count %> Attending
+      </p>
       <% if !game.complete? && @user.admin? %>
       <p><%= link_to 'End Session', group_game_path(@group.id, game.id), method: :patch %></p>
       <% end %>
