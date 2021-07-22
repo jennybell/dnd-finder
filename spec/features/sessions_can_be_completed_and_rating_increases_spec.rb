@@ -13,7 +13,7 @@ feature 'Session Complete' do
     sign_up
     create_group
     schedule_game
-    click_link 'Going'
+    find(class: 'att').click
     click_link 'End Session'
     expect(User.first.rating).to eq 13
   end

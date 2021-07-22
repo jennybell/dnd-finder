@@ -6,7 +6,7 @@ feature 'Edit Groups' do
     create_group
     find('a', class: 'edit-btn').click
     fill_in('Name', with: 'edited test group')
-    click_button 'Submit'
+    click_button 'Update Group'
     expect(page).to have_content 'edited test group'
   end
 

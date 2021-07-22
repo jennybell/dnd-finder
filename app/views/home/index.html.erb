@@ -13,7 +13,6 @@
         <% end %>
         <div class="user-details">
           <h1 class="username"><%= @user.username %></h1>
-          <!-- <p><i class="fas fa-at"></i> <%= @user.email %></p> -->
           <p><i class="fas fa-map-marker-alt"></i> <%= @user.address %></p>
           <p>Rating: <%= @user.rating %></p>
           <p><i class="fas fa-level-up-alt"></i> <%= @user.alignment %></p>
@@ -58,15 +57,18 @@
             <h1>All Taverns</h1>
           </div>
           
+          
           <div class="user-group">
-            <% @groups.each do |group| %>
-              <% group.group_users.each do |group_user| %>
-                <% if group_user.user_id != current_user.id %>
-                    <div class="not-user-group-details">
-                    <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
-                    <p>Allys <%= group.group_users.length %></p>
+            <% array = [] %>
+            <% @group_users.each do |group_user| %>
+              <% if !array.include?(group_user.group_id) && (group_user.user_id != current_user.id) %>
+                  <% array << group_user.group_id %>
+
+                  <div class="not-user-group-details">
+                    <h2 class="group-name"><a href="/groups/<%= group_user.group_id %>"><%= group_user.group.name %></a></h2>
+                    <p>Allys <%= group_user.group.users.length %></p>
                   </div>
-                <% end %>
+
               <% end %>
             <% end %>
           </div>
