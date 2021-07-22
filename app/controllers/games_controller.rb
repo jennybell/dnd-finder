@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @game = Game.create(game_params)
-    @message = Message.create(games_id: @game.id, group_id: @group.id, user_id: current_user.id)
+    @message = Message.create(game_id: @game.id, group_id: @group.id, user_id: current_user.id)
     @message.save!
     redirect_to group_path(@group)
   end
