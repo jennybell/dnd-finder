@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_133108) do
+ActiveRecord::Schema.define(version: 2021_07_21_141413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 2021_07_21_133108) do
     t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "games_id"
+    t.index ["games_id"], name: "index_messages_on_games_id"
     t.index ["group_id"], name: "index_messages_on_group_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -152,6 +154,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_133108) do
   add_foreign_key "group_users", "users"
   add_foreign_key "invitations", "groups"
   add_foreign_key "invitations", "users", column: "sender_id"
+  add_foreign_key "messages", "games", column: "games_id"
   add_foreign_key "messages", "groups"
   add_foreign_key "messages", "users"
 end
