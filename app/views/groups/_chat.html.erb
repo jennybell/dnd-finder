@@ -13,9 +13,8 @@
 
       <% @messages.each do |message| %>
                           
-        <% if !message.games_id.nil? %>
-          <% game = Game.find(message.games_id) %>
-          Game scheduled: <%= game.name %> at <%= game.location %> for <%= game.date.strftime("%d/%m/%Y") %> at <%= game.time.strftime("%k:%M") %>
+        <% if !message.game_id.nil? %>
+          Game scheduled: <%= message.game.name %> at <%= message.game.location %> for <%= message.game.date.strftime("%d/%m/%Y") %> at <%= message.game.time.strftime("%k:%M") %>
         <% else %>
           <% if message.user.username == current_user.username %>                   
             <div class="message">

@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @game = Game.create(game_params)
-    @message = Message.create(games_id: @game.id, group_id: @group.id, user_id: current_user.id)
+    @message = Message.create(message_params)
     @message.save!
     redirect_to group_path(@group)
   end
@@ -19,6 +19,10 @@ class GamesController < ApplicationController
   end
 
   private 
+
+  def message_params
+    params.permit(:group_id).merge(game_id: @game.id, user_id: current_user.id)
+  end
 
   def game_params
     params.permit(:date, :time, :name, :location).merge(group_id: @group.id)
