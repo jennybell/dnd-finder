@@ -1,4 +1,9 @@
-<div class="chat-form">
+<div class="left-content-container">
+  <%= image_tag("dice.png", :alt => "Game Dice Logo", :class => "logo") %>
+  <h1 class="land-page-title">Tavern Keepers</h1>
+  <h3 class="land-page-subtitle">Create Your Tavern</h3>
+</div>
+<div class="right-content-container">
   <%= form_with(model: group) do |form| %>
   <% if group.errors.any? %>
     <div id="error_explanation">
@@ -11,67 +16,72 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :information %>
-    <%= form.text_field :information, required: true %>
-  </div>
-
-  <div>
-    <%= form.label "Image" %>
-    <%= form.file_field :image %><br>
-  </div>
-
-  <div>
-    <%= form.label :party_size %>
-    <%= form.select :party_size, [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] %>
-  </div>
-
-   <div>
-    <%= form.label :party_level %>
-    <%= form.select :party_level, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] %>
-  </div>
-
-  <div>
-    <%= form.label :game_edition %>
-    <%= form.select :game_edition, ['D&D', 'AD&D', '2e', '3e', '3.5', '4e', '5e'] %>
-  </div>
-
-  <div>
-    <%= form.label :campaign_type %>
-    <%= form.select :campaign_type, ['Homebrew', 'Module'] %>
-  </div>
-
+    <div class="reg-box">
+      <div class="address">
+        <%= form.label :name %>
+        <%= form.text_field :name, required: true %>
+      </div>
+    </div>
+    <br>
+    <div class="reg-box">
+      <div class="bio">
+        <%= form.label :information %>
+        <%= form.text_area :information, required: true %>
+      </div>
+    </div>
+    <br>
+    <div class="reg-box">
+      <div class="avatar"> 
+        <%= form.label "Image" %>
+        <%= form.file_field :image %><br>
+      </div>
+      <div class="alignment">
+        <%= form.label :party_size %>
+        <%= form.select :party_size, [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] %>
+      </div>
+      <div class="alignment">
+        <%= form.label :party_level %>
+        <%= form.select :party_level, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] %>
+      </div>
+    </div>
+    <br>
+    <div class="reg-box">
+      <div class="avatar">
+        <%= form.label :game_edition %>
+        <%= form.select :game_edition, ['D&D', 'AD&D', '2e', '3e', '3.5', '4e', '5e'] %>
+      </div>
+      <div class="avatar">
+        <%= form.label :campaign_type %>
+        <%= form.select :campaign_type, ['Homebrew', 'Module'] %>
+      </div>
+    </div>
   <br>
-
   <div>
     <h2>Your Character:</h2>
   </div>
-
-  <div>
-    <%= form.label :character_name %>
-    <%= form.text_field :character_name, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :character_race %>
-    <%= form.text_field :character_race, required: true %>
-  </div>
-
-  <div>
-    <%= form.label :character_class %>
-    <%= form.select :character_class, ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'] %>
-  </div>
-
   <br>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="reg-box">
+    <div class="password">
+      <%= form.label :character_name %>
+      <%= form.text_field :character_name, required: true %>
+    </div>
+    <div class="password">
+      <%= form.label :character_race %>
+      <%= form.text_field :character_race, required: true %>
+    </div>
+  </div>
+  <br>
+  <div class="reg-box">
+    <div class="alignment">
+      <%= form.label :character_class %>
+      <%= form.select :character_class, ['Barbarian', 'Bard', 'Cleric', 'Druid', 'Fighter', 'Monk', 'Paladin', 'Ranger', 'Rogue', 'Sorcerer', 'Warlock', 'Wizard'] %>
+    </div>
+  </div>
+  <br>
+  <div class="reg-btn">
+    <div class="sign-up-btn">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
 </div>

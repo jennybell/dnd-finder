@@ -60,6 +60,7 @@ a {
 }
 
 a:hover {
+  cursor: pointer;
   color: inherit;
   outline: none;
   background-color: inherit;
@@ -68,6 +69,16 @@ a:hover {
 
 a:visited {
   color: inherit;
+}
+
+.fa-thumbs-up {
+  font-size: 18px;
+  color: green;
+}
+
+.fa-thumbs-down {
+  font-size: 18px;
+  color: rgb(187, 3, 3);
 }
 
 p {
