@@ -5,32 +5,37 @@
     <% else %>
     <p>No image</p>
     <% end %>
-    <h1><%= @group.name %></h1>
-  </div>
-  <div class="group-details">
-    <p>
-      <%= @group.information %>
-    </p>
-    <p>Battling since <%= time_ago_in_words(@group.created_at) %> ago</p>
-    <p>
-      <% if @group.group_users.length == 1 %>
-      <%= @group.group_users.length %> Ally of <%= @group.party_size %>
-      <% else %>
-      <%= @group.group_users.length %> Allies of <%= @group.party_size %>
+    <div class="group-details">
+      <h1><%= @group.name %></h1>
+      <p>
+        <%= @group.information %>
+      </p>
+      <p>Battling since <%= time_ago_in_words(@group.created_at) %> ago</p>
+      <p>
+        <% if @group.group_users.length == 1 %>
+        <%= @group.group_users.length %> Ally of <%= @group.party_size %>
+        <% else %>
+        <%= @group.group_users.length %> Allies of <%= @group.party_size %>
+        <% end %>
+      </p>
+      <p>
+        <% if (@group.party_size - @group.group_users.length) == 1 %>
+        <%= @group.party_size - @group.group_users.length %> Seat available, if you are worthy.
+        <% else %>
+        <%= @group.party_size - @group.group_users.length %> Seats available, if you are worthy.
+        <% end %>
+      </p>
+      <p>Game Edition: <%= @group.game_edition %></p>
+      <% if !@user.nil? && @user.admin? %>
+      <%= link_to 'Delete Group', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-group' %>
       <% end %>
-    </p>
-    <p>
-      <% if (@group.party_size - @group.group_users.length) == 1 %>
-      <%= @group.party_size - @group.group_users.length %> Seat available, if you are worthy.
-      <% else %>
-      <%= @group.party_size - @group.group_users.length %> Seats available, if you are worthy.
-      <% end %>
-    </p>
-    <p>Game Edition: <%= @group.game_edition %></p>
+    </div>
   </div>
-  <div class="new-group-btn">
+  
+  
     <% if !@user.nil? && (@user.admin? || @user.dm?) %>
+    <div class="new-group-btn">
       <a class="edit-btn" data-method="get" href="/groups/<%= @group.id %>/edit"><i class="fas fa-edit"></i></a>
-      <% end %>
-  </div>
+    </div>
+    <% end %>
 </div>

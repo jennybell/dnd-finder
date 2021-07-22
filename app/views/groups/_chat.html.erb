@@ -1,11 +1,23 @@
 <div class="chat-box">
+  <div class="new-message">
+    <% if !@user.nil? %>
+    <%= form_with url: group_message_path(@group), method: 'post' do |f| %>
+      <%= f.text_area :content, required: true %>
+      <button class="message_btn" type="submit" name="commit" data-disable-with="Send"><i class="far fa-comment-dots"></i></button>
+    <% end %>
+    <% end %>
+  </div>
+
   <% if !@user.nil? %>
   <div class="chat-window">
+
   <% @messages.each do |message| %>
+                        
     <% if !message.games_id.nil? %>
       <% game = Game.find(message.games_id) %>
       Game scheduled: <%= game.name %> at <%= game.location %> for <%= game.date.strftime("%d/%m/%Y") %> at <%= game.time.strftime("%k:%M") %>
     <% else %>
+     <% if message.user.username == current_user.username %>                   
     <div class="message">
       <div class="message-title">
         <h3><%= message.user.username %> Posted</h3>
@@ -20,44 +32,28 @@
             <div class="comment-content">
               <p><%= comment.body %></p>
             </div>
+            <% end %>
+          </div>
+
+          <%= form_with url: message_comments_path(message_id: message.id, group_id: @group.id), method: :post do |f| %>
+          <p>
+            <input type="hidden" name="comment[name]" id="comment_name" value="<%= current_user.username %>">
+          </p>
+          <div class="comment-textarea">
+            <textarea name="comment[body]" id="comment_body" placeholder="Comment here..." required></textarea>
+            <button class="comment_btn" type="submit" name="commit"><i class="far fa-comment"></i></button>
+          </div>
+
           <% end %>
         </div>
-        
-        <%= form_for([message, message.comments.build]) do |f| %>
-      <p>
-        <input type="hidden" name="comment[name]" id="comment_name" value="<%= current_user.username %>">
-      </p>
-      <!-- <input type="hidden" name="message[id]" id="message_id" value="<%= message.id %>"> -->
-      <div class="comment-textarea">
-        <!-- <%= f.text_area :body %> -->
-        <textarea name="comment[body]" id="comment_body" placeholder="Comment here..." required></textarea>
-        <!-- <%= f.submit %> -->
-        <!-- <input type="submit" name="commit" value="Create Comment" data-disabled-with="Create Comment"> -->
-        <button type="submit" name="commit">Create Comment</button>
-      </div>
-      <p>
-      </p>
+
 
       <% end %>
-      </div>
-    </div>
-  <% end %>
-  <% end %>
-  </div>
-     <br>
-    
-    
-    
-  
 
-  <%= form_with url: group_message_path(@group), method: 'post' do |f| %> 
-    <p>
-      Add message: <br>
-      <%= f.text_area :content, required: true %>
-    </p>
-    <p>
-      <%= f.submit "Send" %>
-    </p>
-  <% end %>
-<% end %>
-</div>
+      </div>
+      <% end %>
+    </div>
+
+    <br>
+    <% end %>
+  </div>

@@ -6,30 +6,19 @@
   <div class="taverns-center-container">
     <%= render 'group_info' %>
 
-    <br>
-
-    <p><%= render 'user_list' %></p>
-
-    <br>
+    <div class="user-game-info">
+      <%= render 'user_list' %>
+      <%= render 'schedule' %>
+    </div>
+    
 
     <%= link_to 'Back', groups_path %>
 
-    <br>
-
     <%= render 'admin_functions' %>
-
-    <br>
 
     <%= render 'requests' %>
 
-    <br>
-
     <%= render 'chat' %>
 
-    <br>
-
-    <%= render 'schedule' %>
   </div>
-
-
 </div>

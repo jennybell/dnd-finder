@@ -25,29 +25,34 @@
       </div>
       <div class="users-nearby">
         <h1>Allies Within 10 Miles</h1>
-        <% for user in @user.nearbys(10) %>
-        <div class="nearby-user">
-          <div class="avatar-dm">
-            <a href="/users/<%= user.id %>"><%= image_tag avatar_for(user), class: "nearby-avatar" %></a>
-            <% if user.dm %>
-            <div class="nearby-dm-badge">
-              <p class="nearby-dm-badge-text">DM</p>
+        <% if @user.nearbys(10) %>
+          <% for user in @user.nearbys(20) %>
+          <div class="nearby-user">
+            <div class="avatar-dm">
+              <a href="/users/<%= user.id %>"><%= image_tag avatar_for(user), class: "nearby-avatar" %></a>
+              <% if user.dm %>
+              <div class="nearby-dm-badge">
+                <p class="nearby-dm-badge-text">DM</p>
+              </div>
+              <% end %>
             </div>
-            <% end %>
+            <div class="nearby-user-details">
+              <h2><a href="/users/<%= user.id %>"><%= user.username %></a></h2>
+              <p><%= user.distance.round(1) %> Miles, Rating: <%= user.rating %>, Alignment: <%= user.alignment %></p>
+            </div>
           </div>
-          <div class="nearby-user-details">
-            <h2><a href="/users/<%= user.id %>"><%= user.username %></a></h2>
-            <p><%= user.distance.round(1) %> Miles, Rating: <%= user.rating %>, Alignment: <%= user.alignment %></p>
-          </div>
-        </div>
+          <% end %>
+        <% else %>
+          <h2>No Allies Nearby</h2>
         <% end %>
+
       </div>
     </div>
 
     <div class="user-right-content-container">
 
       <div class="top-right">
-        
+  
         <div class="not-users-groups">
           <div class="group-heading">
             <h1>All Taverns</h1>
@@ -55,17 +60,18 @@
           
           <div class="user-group">
             <% @groups.each do |group| %>
-            <% group.group_users.each do |group_user| %>
-            <% if current_user.id != group_user.user_id %>
-              <div class="group-details">
-              <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
-              <p>Allys <%= group.group_users.length %></p>
-            </div>
-            <% end %>
-            <% end %>
+              <% group.group_users.each do |group_user| %>
+                <% if group_user.user_id != current_user.id %>
+                    <div class="not-user-group-details">
+                    <h2 class="group-name"><a href="/groups/<%= group.id %>"><%= group.name %></a></h2>
+                    <p>Allys <%= group.group_users.length %></p>
+                  </div>
+                <% end %>
+              <% end %>
             <% end %>
           </div>
         </div>
+
         <div class="all-users">
           <h1>List of all Users</h1>
           <% @users.each do |user| %>
@@ -87,7 +93,6 @@
         </div>
       </div>
 
-      
       <div class="users-groups">
         <div class="group-heading">
           <h1><%= @user.username %>'s' Taverns</h1>
@@ -102,7 +107,7 @@
                 Allys <%= group.group_users.length %>
                 <% group.invitations.each do |invitation| %>
                 <% if invitation.confirmed == false %>
-                  <span class="invite"></span>
+                  <div class="invite"></div>
                 <% end %>
               <% end %>
               </p>
