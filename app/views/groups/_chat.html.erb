@@ -16,8 +16,12 @@
         <% if !message.game_id.nil? %>
           Game scheduled: <%= message.game.name %> at <%= message.game.location %> for <%= message.game.date.strftime("%d/%m/%Y") %> at <%= message.game.time.strftime("%k:%M") %>
         <% else %>
+
           <% if message.user.username == current_user.username %>                   
+            <div class="message-current-user">
+          <% else %>
             <div class="message">
+          <% end %>
               <div class="message-title">
                 <h3><%= message.user.username %> Posted</h3>
               </div>
@@ -43,10 +47,11 @@
                   <textarea name="comment[body]" id="comment_body" placeholder="Comment here..." required></textarea>
                   <button class="comment_btn" type="submit" name="commit"><i class="far fa-comment"></i></button>
                 </div>
-              <% end %>
+              
             </div>
           <% end %>
         <% end %>
+        
       <% end %>
     </div>
   <% end %>
