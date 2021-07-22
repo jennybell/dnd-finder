@@ -5,7 +5,7 @@ describe 'Group Chat' do
     sign_up
     create_group
     fill_in('content', with: 'Sup JP and Willoughby and Jenny')
-    click_button 'Send'
+    find(class: 'message_btn').click
     expect(page).to have_content 'Sup JP and Willoughby and Jenny'
   end
 
