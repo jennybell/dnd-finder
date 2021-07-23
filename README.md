@@ -1,26 +1,45 @@
-# README
+# Tavern Keepers
 
-Test
+You can find our application **[here](https://tavern-keepers.herokuapp.com/)**.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Contributors
 
-Things you may want to cover:
+**[Jenny Bell](https://github.com/jennybell)**
 
-* Ruby version
+**[Charlie Casserly](https://github.com/charlie-casserly)**
 
-* System dependencies
+**[JP Ferreira](https://github.com/GoWebMe2020)**
 
-* Configuration
+**[Willoughby Hood](https://github.com/Wh3g)**
 
-* Database creation
+## About the Project
 
-* Database initialization
+This is a web application that enables users to sign up and create a profile, so they can meet other DnD players online, form groups and schedule games so they can play together.
 
-* How to run the test suite
+This project was built in weeks 11/12 of the Makers Academy course in a team of 4 as our Final Project.
 
-* Services (job queues, cache servers, search engines, etc.)
+To build this app, we used Agile Development, with daily standups and retros, with sprints lasting up to 3 days
 
-* Deployment instructions
+## Built with
 
-* ...
+The main technologies used in this project are as follows:
+
+* Ruby on Rails
+* Devise
+* Heroku
+* JavaScript
+* AWS
+* HTML
+* CSS
+
+## Getting started
+
+```bash
+> bundle install
+> bin/rails db:create
+> bin/rails db:migrate
+
+> bundle exec rspec # Run the tests
+> bin/rails server # Start the server at localhost:3000
+```
+You can also visit the site hosted on Heroku in the link at the top of the page
